@@ -1,22 +1,540 @@
 osm_type,osm_id,name,category,lat,lon,url
-way,23681511,Міст імені Євгена Патона,bridge,50.4267,30.5815,https://www.openstreetmap.org/way/23681511
-way,31849201,Дарницький залізнично-автомобільний міст,bridge,50.4152,30.5889,https://www.openstreetmap.org/way/31849201
-way,28491022,Русанівський метромост,bridge,50.4401,30.5892,https://www.openstreetmap.org/way/28491022
-node,612049101,Березняки,tram_stop,50.4285,30.5948,https://www.openstreetmap.org/node/612049101
-node,612049102,Бульвар Ігоря Шамо,tram_stop,50.4241,30.5962,https://www.openstreetmap.org/node/612049102
-node,612049103,Станція метро Позняки,tram_stop,50.3978,30.6345,https://www.openstreetmap.org/node/612049103
-node,612049104,Дарницька площа,tram_stop,50.4532,30.6331,https://www.openstreetmap.org/node/612049104
-node,612049105,Станція метро Лісова,tram_stop,50.4648,30.6449,https://www.openstreetmap.org/node/612049105
-way,91827364,Храм Різдва Христового на Березняках,church,50.4292,30.5955,https://www.openstreetmap.org/way/91827364
-way,91827365,Храм Святих Жінок-Мироносиць,church,50.3985,30.636,https://www.openstreetmap.org/way/91827365
-way,91827366,Храм Святого Феодосія Чернігівського,church,50.4545,30.6352,https://www.openstreetmap.org/way/91827366
-way,91827367,Храм Святого Миколая на Русанівці,church,50.442,30.5965,https://www.openstreetmap.org/way/91827367
-way,77123451,Парк Березняки,park,50.4275,30.593,https://www.openstreetmap.org/way/77123451
-way,77123452,Русанівська набережна,park,50.4395,30.594,https://www.openstreetmap.org/way/77123452
-way,77123453,Парк Позняки,park,50.4002,30.6385,https://www.openstreetmap.org/way/77123453
-way,77123454,Парк Перемоги,park,50.464,30.6085,https://www.openstreetmap.org/way/77123454
-way,77123455,Парк Партизанської слави,park,50.4335,30.665,https://www.openstreetmap.org/way/77123455
-node,88123401,Пам'ятник Івану Миколайчуку,monument,50.428,30.594,https://www.openstreetmap.org/node/88123401
-node,88123402,Пам'ятник Миколі Гоголю на Русанівці,monument,50.4388,30.5932,https://www.openstreetmap.org/node/88123402
-node,88123403,Меморіал на Дарницькій площі,monument,50.4538,30.634,https://www.openstreetmap.org/node/88123403
-node,88123404,Курган Безсмертя в парку Перемоги,monument,50.4632,30.6078,https://www.openstreetmap.org/node/88123404
+node,26360786,ст. м. «Позняки»,tram_stop,50.400108,30.6326128,https://www.openstreetmap.org/node/26360786
+node,249614158,Вул. Пластова,tram_stop,50.4437198,30.6293104,https://www.openstreetmap.org/node/249614158
+node,271935535,м. Чернігівська,tram_stop,50.459152,30.6307851,https://www.openstreetmap.org/node/271935535
+node,289292712,Вул. Андрія Малишка,tram_stop,50.4626671,30.6284727,https://www.openstreetmap.org/node/289292712
+node,295239318,Парк Партизанської Слави,tram_stop,50.415969,30.6669235,https://www.openstreetmap.org/node/295239318
+node,313617666,просп. Леоніда Каденюка,tram_stop,50.4545774,30.6334371,https://www.openstreetmap.org/node/313617666
+node,313617668,Фінський провулок,tram_stop,50.450543,30.6354846,https://www.openstreetmap.org/node/313617668
+node,346308186,ДВРЗ,tram_stop,50.4492104,30.6777204,https://www.openstreetmap.org/node/346308186
+node,387823414,Вул. Якова Гніздовського,tram_stop,50.4615244,30.6379128,https://www.openstreetmap.org/node/387823414
+node,410858054,Вул. Вербицького,tram_stop,50.4153165,30.6491204,https://www.openstreetmap.org/node/410858054
+node,572611350,"Ст. м. ""Лісова""",tram_stop,50.4633563,30.6427441,https://www.openstreetmap.org/node/572611350
+node,954550309,Житловий комплекс «Мега-сіті»,tram_stop,50.4335152,30.6327088,https://www.openstreetmap.org/node/954550309
+node,976704761,Воїнам-інтернаціоналістам,monument,50.4090591,30.6563162,https://www.openstreetmap.org/node/976704761
+node,976777959,бул. Ярослава Гашека,tram_stop,50.4373038,30.6304507,https://www.openstreetmap.org/node/976777959
+node,976777960,Вул. Празька,tram_stop,50.4405546,30.6285206,https://www.openstreetmap.org/node/976777960
+node,1126130470,Загиблим в Дарницькому районі під час Другої світової війни,monument,50.4299947,30.6466797,https://www.openstreetmap.org/node/1126130470
+node,1262253432,"Робітникам ВАТ «Хімволокно», які загинули під час ВВВ",monument,50.4545046,30.6408582,https://www.openstreetmap.org/node/1262253432
+node,1323049152,просп. Алішера Навої,tram_stop,50.4714813,30.6145777,https://www.openstreetmap.org/node/1323049152
+node,1323049155,Вул. Анатолія Солов'яненка,tram_stop,50.4656804,30.6262424,https://www.openstreetmap.org/node/1323049155
+node,1323049159,Вул. Юності,tram_stop,50.4694301,30.6207471,https://www.openstreetmap.org/node/1323049159
+node,1323091911,вул. Привокзальна,tram_stop,50.4280774,30.6385005,https://www.openstreetmap.org/node/1323091911
+node,1323091915,Новодарницька вулиця,tram_stop,50.4255958,30.654648,https://www.openstreetmap.org/node/1323091915
+node,1323091940,Тростянецька вулиця,tram_stop,50.4208387,30.6590543,https://www.openstreetmap.org/node/1323091940
+node,1323091943,Музична школа,tram_stop,50.4181304,30.6634104,https://www.openstreetmap.org/node/1323091943
+node,1323091945,вулиця Юрія Шевельова,tram_stop,50.4231753,30.6561118,https://www.openstreetmap.org/node/1323091945
+node,1323091950,Залізничний вокзал «Дарниця»,tram_stop,50.4308978,30.6484365,https://www.openstreetmap.org/node/1323091950
+node,1323091952,Вул. Грузинська,tram_stop,50.4111425,30.6725133,https://www.openstreetmap.org/node/1323091952
+node,1323091956,вул. Володмира Рибака,tram_stop,50.4137028,30.6680349,https://www.openstreetmap.org/node/1323091956
+node,1323091960,вулиця Ісмаїла Гаспринського,tram_stop,50.4288182,30.6527201,https://www.openstreetmap.org/node/1323091960
+node,1323091961,пров. Ялинковий,tram_stop,50.4087114,30.6768001,https://www.openstreetmap.org/node/1323091961
+node,1324145497,Вул. Анни Ахматової,tram_stop,50.4100008,30.6335305,https://www.openstreetmap.org/node/1324145497
+node,1324145499,просп. Григоренка,tram_stop,50.4045448,30.6313796,https://www.openstreetmap.org/node/1324145499
+node,1324145515,Вул. Ревуцького,tram_stop,50.4139121,30.6469434,https://www.openstreetmap.org/node/1324145515
+node,1324145518,вул. Дениса Антіпова,tram_stop,50.4208691,30.6579169,https://www.openstreetmap.org/node/1324145518
+node,1324145521,АТС,tram_stop,50.4082011,30.6292987,https://www.openstreetmap.org/node/1324145521
+node,1324174269,Дарницький ринок,tram_stop,50.4311252,30.6538377,https://www.openstreetmap.org/node/1324174269
+node,1396603424,Воїнам-Чорнобильцям,monument,50.445697,30.6120863,https://www.openstreetmap.org/node/1396603424
+node,1462797402,Микола Гоголь,monument,50.4383506,30.5925742,https://www.openstreetmap.org/node/1462797402
+node,1469892440,Вовча гора,monument,50.459784,30.6226716,https://www.openstreetmap.org/node/1469892440
+node,1497169176,Автобусний парк,tram_stop,50.4408155,30.6322668,https://www.openstreetmap.org/node/1497169176
+node,1497182561,Вул. Азербайджанська,tram_stop,50.4393388,30.6388442,https://www.openstreetmap.org/node/1497182561
+node,1497192019,Вул. Профспілкова,tram_stop,50.4378135,30.6506108,https://www.openstreetmap.org/node/1497192019
+node,1497192031,Вулиця Гроденська,tram_stop,50.4358276,30.6467403,https://www.openstreetmap.org/node/1497192031
+node,1497192032,Вул. Княгині Інгігерди,tram_stop,50.437292,30.6424401,https://www.openstreetmap.org/node/1497192032
+node,1497217547,База «Укроптбакалія»,tram_stop,50.4412894,30.6625434,https://www.openstreetmap.org/node/1497217547
+node,1497220703,вул. Батальйону Шейха Мансура,tram_stop,50.4477138,30.674425,https://www.openstreetmap.org/node/1497220703
+node,1497220705,ДВРЗ,tram_stop,50.4489285,30.6779333,https://www.openstreetmap.org/node/1497220705
+node,1497220706,Вул. Довбуша,tram_stop,50.4454894,30.6703688,https://www.openstreetmap.org/node/1497220706
+node,1502872862,Радіомеханічний коледж,tram_stop,50.4304574,30.6576146,https://www.openstreetmap.org/node/1502872862
+node,1502876961,Завод «Ремшляхтехніка»,tram_stop,50.4295234,30.6628717,https://www.openstreetmap.org/node/1502876961
+node,1502879483,Палац культури та техніки «Дніпро»,tram_stop,50.4285782,30.6681879,https://www.openstreetmap.org/node/1502879483
+node,1502884797,пров. Надії Світличної,tram_stop,50.4272932,30.6754704,https://www.openstreetmap.org/node/1502884797
+node,1502888150,Вулиця Академіка Горбунова,tram_stop,50.426576,30.6794635,https://www.openstreetmap.org/node/1502888150
+node,1788716902,Пам'ятний знак від міста Миколаїв,monument,50.4709078,30.6412013,https://www.openstreetmap.org/node/1788716902
+node,1922224575,Харківський масив,tram_stop,50.4127128,30.6441718,https://www.openstreetmap.org/node/1922224575
+node,2029884076,Пам'ятник жертвам Дарницького концтабору,monument,50.4236039,30.6482124,https://www.openstreetmap.org/node/2029884076
+node,2209741429,"Працівникам Київського регенераторного заводу, що загинули в боях за батьківщину в 1941-1945 рр.",monument,50.4367437,30.6216275,https://www.openstreetmap.org/node/2209741429
+node,2475988412,Вул. Юності,tram_stop,50.4692189,30.6215172,https://www.openstreetmap.org/node/2475988412
+node,2475988439,м. Чернігівська,tram_stop,50.4594287,30.6306454,https://www.openstreetmap.org/node/2475988439
+node,2475988541,Вул. Андрія Малишка,tram_stop,50.4626925,30.6285067,https://www.openstreetmap.org/node/2475988541
+node,2475993501,Вул. Якова Гніздовського,tram_stop,50.4607256,30.6364671,https://www.openstreetmap.org/node/2475993501
+node,2476003679,Вул. Анатолія Солов'яненка,tram_stop,50.4654814,30.6264428,https://www.openstreetmap.org/node/2476003679
+node,2476003683,вулиця Чорних Запорожців,tram_stop,50.4799405,30.6066231,https://www.openstreetmap.org/node/2476003683
+node,2476003711,просп. Алішера Навої,tram_stop,50.471302,30.615213,https://www.openstreetmap.org/node/2476003711
+node,2583986240,"Камінь що, є символом дружби радянських, польських та словацьких партизан",monument,50.4172523,30.6660102,https://www.openstreetmap.org/node/2583986240
+node,3101317533,вул. Сімферопольська,tram_stop,50.4300716,30.6450733,https://www.openstreetmap.org/node/3101317533
+node,3157673763,Академік О. М. Марзєєв,monument,50.4598084,30.632875,https://www.openstreetmap.org/node/3157673763
+node,3160357127,просп. Леоніда Каденюка,tram_stop,50.4546391,30.6334404,https://www.openstreetmap.org/node/3160357127
+node,3160409883,Автобусний парк,tram_stop,50.4406595,30.6331941,https://www.openstreetmap.org/node/3160409883
+node,3160409884,Вулиця Машиністівська,tram_stop,50.4430194,30.6657093,https://www.openstreetmap.org/node/3160409884
+node,3160409886,Вулиця Гроденська,tram_stop,50.4358143,30.6466281,https://www.openstreetmap.org/node/3160409886
+node,3160409887,Вул. Довбуша,tram_stop,50.4457054,30.6706962,https://www.openstreetmap.org/node/3160409887
+node,3160409888,Вул. Княгині Інгігерди,tram_stop,50.4372617,30.6425732,https://www.openstreetmap.org/node/3160409888
+node,3160409889,вул. Батальйону Шейха Мансура,tram_stop,50.4479861,30.6746901,https://www.openstreetmap.org/node/3160409889
+node,3160409890,База «Укроптбакалія»,tram_stop,50.4409824,30.6618935,https://www.openstreetmap.org/node/3160409890
+node,3160409891,Вул. Профспілкова,tram_stop,50.438182,30.6512393,https://www.openstreetmap.org/node/3160409891
+node,3160432341,"Житловий комплекс ""Мега-сіті""",tram_stop,50.4332468,30.6329163,https://www.openstreetmap.org/node/3160432341
+node,3160432342,Залізничний вокзал «Дарниця»,tram_stop,50.4310274,30.6488455,https://www.openstreetmap.org/node/3160432342
+node,3160432343,Дарницький ринок,tram_stop,50.4311537,30.6538558,https://www.openstreetmap.org/node/3160432343
+node,3160432344,Завод «Ремшляхтехніка»,tram_stop,50.4294149,30.6636823,https://www.openstreetmap.org/node/3160432344
+node,3160432346,Палац культури та техніки «Дніпро»,tram_stop,50.4286408,30.6680158,https://www.openstreetmap.org/node/3160432346
+node,3160432347,tram_stop_3160432347,tram_stop,50.4271567,30.6764015,https://www.openstreetmap.org/node/3160432347
+node,3160432348,Радіомеханічний коледж,tram_stop,50.4304893,30.6576202,https://www.openstreetmap.org/node/3160432348
+node,3160432350,бул. Ярослава Гашека,tram_stop,50.4372789,30.6305238,https://www.openstreetmap.org/node/3160432350
+node,3160432352,Вулиця Павла Усенка,tram_stop,50.4461806,30.6321218,https://www.openstreetmap.org/node/3160432352
+node,3160432353,Вул. Празька,tram_stop,50.4405882,30.6285645,https://www.openstreetmap.org/node/3160432353
+node,3160432354,вул. Привокзальна,tram_stop,50.428117,30.6385336,https://www.openstreetmap.org/node/3160432354
+node,3160432355,Вул. Пластова,tram_stop,50.4427217,30.6284979,https://www.openstreetmap.org/node/3160432355
+node,3160432357,Фінський провулок,tram_stop,50.4498756,30.6359799,https://www.openstreetmap.org/node/3160432357
+node,3161623261,АТС,tram_stop,50.4090778,30.6298466,https://www.openstreetmap.org/node/3161623261
+node,3161623262,Музична школа,tram_stop,50.4181891,30.6632454,https://www.openstreetmap.org/node/3161623262
+node,3161623263,Парк Партизанської Слави,tram_stop,50.4162118,30.6664528,https://www.openstreetmap.org/node/3161623263
+node,3161623264,Торговий центр,tram_stop,50.4021037,30.6326827,https://www.openstreetmap.org/node/3161623264
+node,3161623265,Харківське шосе,tram_stop,50.4187751,30.6546059,https://www.openstreetmap.org/node/3161623265
+node,3161623266,Харківське шосе,tram_stop,50.4195145,30.6557042,https://www.openstreetmap.org/node/3161623266
+node,3161623267,Харківський масив,tram_stop,50.4125602,30.6434496,https://www.openstreetmap.org/node/3161623267
+node,3161623268,Вул. Анни Ахматової,tram_stop,50.4100252,30.6335191,https://www.openstreetmap.org/node/3161623268
+node,3161623270,Вул. Вербицького,tram_stop,50.4157009,30.649698,https://www.openstreetmap.org/node/3161623270
+node,3161623271,Вул. Грузинська,tram_stop,50.4112435,30.6722628,https://www.openstreetmap.org/node/3161623271
+node,3161623272,Вул. Драгоманова,tram_stop,50.4112647,30.6383094,https://www.openstreetmap.org/node/3161623272
+node,3161623273,Новодарницька вулиця,tram_stop,50.425935,30.6544014,https://www.openstreetmap.org/node/3161623273
+node,3161623275,вулиця Юрія Шевельова,tram_stop,50.4233842,30.655933,https://www.openstreetmap.org/node/3161623275
+node,3161623276,Ташкентська вулиця,tram_stop,50.4141019,30.6679473,https://www.openstreetmap.org/node/3161623276
+node,3161623277,Тростянецька вулиця,tram_stop,50.4217074,30.657608,https://www.openstreetmap.org/node/3161623277
+node,3161623278,вулиця Ісмаїла Гаспринського,tram_stop,50.4291661,30.652462,https://www.openstreetmap.org/node/3161623278
+node,3161623279,пров. Ялинковий,tram_stop,50.4088022,30.6765762,https://www.openstreetmap.org/node/3161623279
+node,3161623280,просп. Григоренка,tram_stop,50.4047603,30.6311945,https://www.openstreetmap.org/node/3161623280
+node,3161774651,Вул. Ревуцького,tram_stop,50.4140175,30.6470324,https://www.openstreetmap.org/node/3161774651
+node,3161964888,вул. Сімферопольська,tram_stop,50.4299151,30.6446464,https://www.openstreetmap.org/node/3161964888
+node,3294531239,Леонід Биков,monument,50.4452243,30.5994828,https://www.openstreetmap.org/node/3294531239
+node,3618181098,Зеленський Євгеній Олександрович,monument,50.4519761,30.6117851,https://www.openstreetmap.org/node/3618181098
+node,3618529356,Погрибний А. Г.,monument,50.4513841,30.6129471,https://www.openstreetmap.org/node/3618529356
+node,3762918418,Дарницький вокзал,tram_stop,50.4306958,30.6476677,https://www.openstreetmap.org/node/3762918418
+node,3795586772,Церква Життя для Бога,church,50.4596527,30.6340693,https://www.openstreetmap.org/node/3795586772
+node,3987835164,"Церква Віри, Надії та Любові",church,50.4102031,30.6323938,https://www.openstreetmap.org/node/3987835164
+node,3989450777,Пам'яті залізничникам дарничанам які загинули під час великої вітчизняної війни,monument,50.4314513,30.6492234,https://www.openstreetmap.org/node/3989450777
+node,4295858892,Шиншилла,monument,50.42808,30.6357628,https://www.openstreetmap.org/node/4295858892
+node,4737160124,Монумент містам-героям,monument,50.4576317,30.6080438,https://www.openstreetmap.org/node/4737160124
+node,4791441108,Пам'ятник Героям Небесної Сотні,monument,50.4062761,30.6407298,https://www.openstreetmap.org/node/4791441108
+node,4875925093,monument_4875925093,monument,50.4521564,30.585838,https://www.openstreetmap.org/node/4875925093
+node,4884130908,"Ст. м. ""Лісова""",tram_stop,50.4633606,30.6426608,https://www.openstreetmap.org/node/4884130908
+node,4922010721,Церква Христова,church,50.4485008,30.5931106,https://www.openstreetmap.org/node/4922010721
+node,4927748323,Пам'ятник ветеранам,monument,50.4574515,30.6080999,https://www.openstreetmap.org/node/4927748323
+node,4927748324,monument_4927748324,monument,50.457998,30.6078877,https://www.openstreetmap.org/node/4927748324
+node,4927748325,monument_4927748325,monument,50.4580525,30.6082583,https://www.openstreetmap.org/node/4927748325
+node,4928538052,monument_4928538052,monument,50.4624894,30.600595,https://www.openstreetmap.org/node/4928538052
+node,4928538053,"Постамент ""Парк Перемога""",monument,50.4644273,30.6073533,https://www.openstreetmap.org/node/4928538053
+node,4961210333,Різоль Микола Іванович,monument,50.436252,30.5930677,https://www.openstreetmap.org/node/4961210333
+node,4964248621,monument_4964248621,monument,50.4178245,30.6551856,https://www.openstreetmap.org/node/4964248621
+node,5103114247,Флагшток,monument,50.4015311,30.634803,https://www.openstreetmap.org/node/5103114247
+node,5590674424,Андрій Малишко,monument,50.4597625,30.6210774,https://www.openstreetmap.org/node/5590674424
+node,5590674428,Матір'ям,monument,50.4578499,30.607925,https://www.openstreetmap.org/node/5590674428
+node,5590674429,Пам'ятник матері,monument,50.4613237,30.6062099,https://www.openstreetmap.org/node/5590674429
+node,5678343657,Захисникам кордонів Вітчизни,monument,50.4628405,30.6050531,https://www.openstreetmap.org/node/5678343657
+node,5790319595,Пам'ятник Івану Миколайчуку,monument,50.4316668,30.5970631,https://www.openstreetmap.org/node/5790319595
+node,5800851173,АТП-13055,tram_stop,50.4419078,30.6411511,https://www.openstreetmap.org/node/5800851173
+node,5800851174,АТП-13055,tram_stop,50.4426219,30.6413716,https://www.openstreetmap.org/node/5800851174
+node,5819906954,Будинок Архітектора,church,50.4700198,30.6451572,https://www.openstreetmap.org/node/5819906954
+node,5836902386,monument_5836902386,monument,50.462828,30.6509993,https://www.openstreetmap.org/node/5836902386
+node,5874358152,Пам'ятний знак на честь побратимства Києва і Братислави,monument,50.4781623,30.6188133,https://www.openstreetmap.org/node/5874358152
+node,6174648021,church_6174648021,church,50.4570097,30.5939982,https://www.openstreetmap.org/node/6174648021
+node,6349504213,monument_6349504213,monument,50.4489514,30.6761423,https://www.openstreetmap.org/node/6349504213
+node,6461433087,Храм Ксенії Петербурзької,church,50.4769183,30.6026175,https://www.openstreetmap.org/node/6461433087
+node,6593277080,Український Біблійний інститут,church,50.39524,30.6248948,https://www.openstreetmap.org/node/6593277080
+node,7455174871,Вулиця Азербайджанська,tram_stop,50.4388223,30.6398567,https://www.openstreetmap.org/node/7455174871
+node,7857874207,Серце,monument,50.4568336,30.6113365,https://www.openstreetmap.org/node/7857874207
+node,7879947387,Баула Сергій Миколайович,monument,50.4767133,30.6347169,https://www.openstreetmap.org/node/7879947387
+node,7902333266,Едуард Маркович Митницький,monument,50.4532575,30.5996077,https://www.openstreetmap.org/node/7902333266
+node,8441089128,PS 752,monument,50.4208279,30.5918773,https://www.openstreetmap.org/node/8441089128
+node,8726189683,monument_8726189683,monument,50.4250027,30.6050509,https://www.openstreetmap.org/node/8726189683
+node,8781113753,monument_8781113753,monument,50.4296202,30.6049616,https://www.openstreetmap.org/node/8781113753
+node,8781113754,monument_8781113754,monument,50.4295656,30.604862,https://www.openstreetmap.org/node/8781113754
+node,8961493617,Шимановський Віталій Миколайович,monument,50.4556516,30.6061225,https://www.openstreetmap.org/node/8961493617
+node,9005992245,Каплиця св. Софії Премудрості Божої,church,50.4768424,30.639182,https://www.openstreetmap.org/node/9005992245
+node,9033446629,Повстяний Микола Юхимович,monument,50.4567697,30.6238591,https://www.openstreetmap.org/node/9033446629
+node,9047949198,park_9047949198,park,50.4541631,30.5855909,https://www.openstreetmap.org/node/9047949198
+node,9119574736,Загиблим від вибуху 21.06.2020,monument,50.3930245,30.6367475,https://www.openstreetmap.org/node/9119574736
+node,9159973557,Алея Злагоди,monument,50.4011512,30.6350564,https://www.openstreetmap.org/node/9159973557
+node,9310194417,Дивись серцем,monument,50.4553819,30.6143738,https://www.openstreetmap.org/node/9310194417
+node,9405703988,Пам’ятник Воїнам АТО,monument,50.4060215,30.6405783,https://www.openstreetmap.org/node/9405703988
+node,9634963469,church_9634963469,church,50.4482898,30.5991111,https://www.openstreetmap.org/node/9634963469
+node,9748058459,Алея пам'яті Олександра Звінника,monument,50.4657262,30.6089053,https://www.openstreetmap.org/node/9748058459
+node,10053664105,"Пам'ятник Лівобережний ботанічний сад, громадська інициатива",monument,50.434791,30.6048664,https://www.openstreetmap.org/node/10053664105
+node,10859300517,Пам'ятний знак Захисникам вітчизни,monument,50.4417143,30.6301405,https://www.openstreetmap.org/node/10859300517
+node,10922113039,Вулиця Павла Усенка,tram_stop,50.4461538,30.6323621,https://www.openstreetmap.org/node/10922113039
+node,10939042966,monument_10939042966,monument,50.4310583,30.5968673,https://www.openstreetmap.org/node/10939042966
+node,11033935239,Ліквідаторам аварії на ЧАЕС,monument,50.4082452,30.660959,https://www.openstreetmap.org/node/11033935239
+node,11232998231,Вул. Гната Хоткевича,tram_stop,50.4447416,30.6381782,https://www.openstreetmap.org/node/11232998231
+node,11232998232,Вул. Гната Хоткевича,tram_stop,50.4447266,30.6380916,https://www.openstreetmap.org/node/11232998232
+node,11357666534,"Тороповський Георгій ""Hunter""",monument,50.4472358,30.6127895,https://www.openstreetmap.org/node/11357666534
+node,11379292712,Аболмасов А.В.,monument,50.459498,30.5860028,https://www.openstreetmap.org/node/11379292712
+node,11443563970,Дарницька ТЕЦ,tram_stop,50.44769,30.6374875,https://www.openstreetmap.org/node/11443563970
+node,11443564769,Дарницька ТЕЦ,tram_stop,50.4479563,30.6372494,https://www.openstreetmap.org/node/11443564769
+node,12193354096,Романов Олександр Олегович,monument,50.4777673,30.626396,https://www.openstreetmap.org/node/12193354096
+node,12732456552,monument_12732456552,monument,50.4380892,30.6485229,https://www.openstreetmap.org/node/12732456552
+node,13436497628,Дарницький ринок,tram_stop,50.4313305,30.6527019,https://www.openstreetmap.org/node/13436497628
+node,13738334231,Омега незламних,monument,50.4294177,30.6607187,https://www.openstreetmap.org/node/13738334231
+node,14055929096,Паровоз,monument,50.4313794,30.6490726,https://www.openstreetmap.org/node/14055929096
+way,4335942,Південний міст,bridge,50.3973354,30.5723261,https://www.openstreetmap.org/way/4335942
+way,6163754,bridge_6163754,bridge,50.4462582,30.5909916,https://www.openstreetmap.org/way/6163754
+way,6164071,Русанівська набережна,bridge,50.4323735,30.5926906,https://www.openstreetmap.org/way/6164071
+way,7701370,bridge_7701370,bridge,50.4176791,30.592025,https://www.openstreetmap.org/way/7701370
+way,8082773,bridge_8082773,bridge,50.4343916,30.6000043,https://www.openstreetmap.org/way/8082773
+way,8742081,bridge_8742081,bridge,50.448127,30.5844742,https://www.openstreetmap.org/way/8742081
+way,9451696,міст Патона,bridge,50.4272428,30.5820827,https://www.openstreetmap.org/way/9451696
+way,23118857,проспект Соборності,bridge,50.4382669,30.6124423,https://www.openstreetmap.org/way/23118857
+way,23151732,bridge_23151732,bridge,50.4439615,30.5991158,https://www.openstreetmap.org/way/23151732
+way,23151735,bridge_23151735,bridge,50.4397489,30.6083171,https://www.openstreetmap.org/way/23151735
+way,23154503,вулиця Будівельників,bridge,50.455283,30.6099789,https://www.openstreetmap.org/way/23154503
+way,23180724,Південний міст,bridge,50.3975125,30.5724192,https://www.openstreetmap.org/way/23180724
+way,23180853,Дніпровська набережна,bridge,50.3954174,30.616063,https://www.openstreetmap.org/way/23180853
+way,23196401,bridge_23196401,bridge,50.3946574,30.5938946,https://www.openstreetmap.org/way/23196401
+way,23240076,bridge_23240076,bridge,50.4519239,30.5981234,https://www.openstreetmap.org/way/23240076
+way,23278430,Броварський проспект,bridge,50.4482659,30.5843787,https://www.openstreetmap.org/way/23278430
+way,23386280,bridge_23386280,bridge,50.4533581,30.6033815,https://www.openstreetmap.org/way/23386280
+way,23386315,Броварський проспект,bridge,50.4534388,30.6032533,https://www.openstreetmap.org/way/23386315
+way,23386321,Броварський проспект,bridge,50.4535087,30.6031956,https://www.openstreetmap.org/way/23386321
+way,23636505,park_23636505,park,50.4429045,30.6167515,https://www.openstreetmap.org/way/23636505
+way,23705293,Парк «Перемога»,park,50.4642451,30.6056041,https://www.openstreetmap.org/way/23705293
+way,23863506,Парк «Кримський»,park,50.428588,30.6546604,https://www.openstreetmap.org/way/23863506
+way,24560703,проспект Соборності,bridge,50.4383534,30.6123705,https://www.openstreetmap.org/way/24560703
+way,24560908,Харківське шосе,bridge,50.4290762,30.6354587,https://www.openstreetmap.org/way/24560908
+way,26468196,Братиславська вулиця,bridge,50.4699251,30.6234743,https://www.openstreetmap.org/way/26468196
+way,26468197,Братиславська вулиця,bridge,50.4699536,30.6235765,https://www.openstreetmap.org/way/26468197
+way,27242454,Церква Георгія Побідоносця,church,50.445878,30.6138585,https://www.openstreetmap.org/way/27242454
+way,27242472,Храм Архістратига Михайла,church,50.4463123,30.6138255,https://www.openstreetmap.org/way/27242472
+way,27242473,Храм Входу Господнього в Єрусалим,church,50.4464734,30.6125941,https://www.openstreetmap.org/way/27242473
+way,27759124,Броварський проспект,bridge,50.4519917,30.5980909,https://www.openstreetmap.org/way/27759124
+way,27759129,Броварський проспект,bridge,50.4525421,30.597748,https://www.openstreetmap.org/way/27759129
+way,28082363,Парк «Позняки»,park,50.4006816,30.6372139,https://www.openstreetmap.org/way/28082363
+way,28458494,вулиця Гната Хоткевича,bridge,50.4598417,30.6304637,https://www.openstreetmap.org/way/28458494
+way,28458495,вулиця Гната Хоткевича,bridge,50.4597786,30.6302674,https://www.openstreetmap.org/way/28458495
+way,28549405,bridge_28549405,bridge,50.4677504,30.6552637,https://www.openstreetmap.org/way/28549405
+way,28549408,bridge_28549408,bridge,50.4598032,30.6303374,https://www.openstreetmap.org/way/28549408
+way,30170211,Церква Преображення,church,50.4064144,30.6658563,https://www.openstreetmap.org/way/30170211
+way,31028387,park_31028387,park,50.4236057,30.6479525,https://www.openstreetmap.org/way/31028387
+way,31028437,"Парк ""Привокзальний""",park,50.4307316,30.6497933,https://www.openstreetmap.org/way/31028437
+way,31140358,bridge_31140358,bridge,50.4426326,30.672625,https://www.openstreetmap.org/way/31140358
+way,32870085,Парк Партизанської слави,park,50.4174728,30.6727061,https://www.openstreetmap.org/way/32870085
+way,35302020,проспект Петра Григоренка,bridge,50.3983927,30.6344589,https://www.openstreetmap.org/way/35302020
+way,37572792,park_37572792,park,50.4384452,30.5943806,https://www.openstreetmap.org/way/37572792
+way,37836520,park_37836520,park,50.4346043,30.6042054,https://www.openstreetmap.org/way/37836520
+way,37836524,Вербовий гай,park,50.4240094,30.5917946,https://www.openstreetmap.org/way/37836524
+way,37836984,bridge_37836984,bridge,50.4164562,30.5877727,https://www.openstreetmap.org/way/37836984
+way,37920147,вулиця Ревуцького,bridge,50.4011052,30.6520735,https://www.openstreetmap.org/way/37920147
+way,37921538,park_37921538,park,50.4502974,30.6251189,https://www.openstreetmap.org/way/37921538
+way,39076111,park_39076111,park,50.4549972,30.6187506,https://www.openstreetmap.org/way/39076111
+way,39646505,bridge_39646505,bridge,50.4428886,30.6725157,https://www.openstreetmap.org/way/39646505
+way,40496879,"Парк будинку культури ""Дарниця""",park,50.4277215,30.6586873,https://www.openstreetmap.org/way/40496879
+way,43202195,bridge_43202195,bridge,50.4482902,30.5843557,https://www.openstreetmap.org/way/43202195
+way,44423547,bridge_44423547,bridge,50.4011395,30.652304,https://www.openstreetmap.org/way/44423547
+way,44658225,bridge_44658225,bridge,50.4259961,30.6232462,https://www.openstreetmap.org/way/44658225
+way,45138668,bridge_45138668,bridge,50.4010722,30.65186,https://www.openstreetmap.org/way/45138668
+way,45143450,Дарницький залізнично-автомобільний міст,bridge,50.4160735,30.5863857,https://www.openstreetmap.org/way/45143450
+way,45143453,bridge_45143453,bridge,50.4152636,30.5950955,https://www.openstreetmap.org/way/45143453
+way,45143454,bridge_45143454,bridge,50.4168108,30.5969598,https://www.openstreetmap.org/way/45143454
+way,45985363,міст Патона,bridge,50.4273029,30.5820018,https://www.openstreetmap.org/way/45985363
+way,51353591,Парк Сканді,park,50.3924919,30.6316882,https://www.openstreetmap.org/way/51353591
+way,67218711,bridge_67218711,bridge,50.3876489,30.6068264,https://www.openstreetmap.org/way/67218711
+way,67218795,bridge_67218795,bridge,50.3910505,30.6061204,https://www.openstreetmap.org/way/67218795
+way,67218898,Дніпровська набережна,bridge,50.395466,30.6163927,https://www.openstreetmap.org/way/67218898
+way,86686149,bridge_86686149,bridge,50.4210228,30.6045889,https://www.openstreetmap.org/way/86686149
+way,86686159,bridge_86686159,bridge,50.4209478,30.6046396,https://www.openstreetmap.org/way/86686159
+way,92829946,Парк воїнів-інтернаціоналістів,park,50.4096573,30.6568821,https://www.openstreetmap.org/way/92829946
+way,97212076,park_97212076,park,50.4310165,30.6524002,https://www.openstreetmap.org/way/97212076
+way,97834055,Парк ДШК,park,50.4578736,30.6358356,https://www.openstreetmap.org/way/97834055
+way,98290250,park_98290250,park,50.44284,30.6273446,https://www.openstreetmap.org/way/98290250
+way,98873508,bridge_98873508,bridge,50.3902714,30.6632966,https://www.openstreetmap.org/way/98873508
+way,98873512,bridge_98873512,bridge,50.3904693,30.662983,https://www.openstreetmap.org/way/98873512
+way,99371636,bridge_99371636,bridge,50.4292475,30.6359464,https://www.openstreetmap.org/way/99371636
+way,101960735,bridge_101960735,bridge,50.4288325,30.6308277,https://www.openstreetmap.org/way/101960735
+way,102267204,Церква Ісуса Христа Святих Останніх Днів,church,50.3978838,30.6189671,https://www.openstreetmap.org/way/102267204
+way,102868094,Церква святого Йоана Крондштатського,church,50.4147506,30.6697961,https://www.openstreetmap.org/way/102868094
+way,103180963,Храми Богоявленння та Жен Мироносиць,church,50.4144386,30.6299025,https://www.openstreetmap.org/way/103180963
+way,103565926,Святителя Николая Чудотворца,church,50.416167,30.6368338,https://www.openstreetmap.org/way/103565926
+way,106747829,Сортувальна вулиця,bridge,50.4203222,30.6065952,https://www.openstreetmap.org/way/106747829
+way,106747831,Дарницький залізнично-автомобільний міст,bridge,50.4156634,30.5858286,https://www.openstreetmap.org/way/106747831
+way,107095473,bridge_107095473,bridge,50.4172633,30.595604,https://www.openstreetmap.org/way/107095473
+way,107288485,Броварський проспект,bridge,50.4481934,30.5844295,https://www.openstreetmap.org/way/107288485
+way,108203320,Міжнародний християнський гуманітарний центр,church,50.45675,30.6225973,https://www.openstreetmap.org/way/108203320
+way,108216062,park_108216062,park,50.4542556,30.6096711,https://www.openstreetmap.org/way/108216062
+way,110380175,park_110380175,park,50.4536156,30.6329725,https://www.openstreetmap.org/way/110380175
+way,112453176,park_112453176,park,50.458174,30.5900862,https://www.openstreetmap.org/way/112453176
+way,113113344,Храм великомученика Пантелеймона,church,50.4516527,30.6786568,https://www.openstreetmap.org/way/113113344
+way,113113348,Сосновий парк,park,50.4522567,30.6781606,https://www.openstreetmap.org/way/113113348
+way,113516216,Приход Римсько-Католицької церкви,church,50.4740125,30.5959482,https://www.openstreetmap.org/way/113516216
+way,115480420,park_115480420,park,50.4593813,30.6215124,https://www.openstreetmap.org/way/115480420
+way,115480421,park_115480421,park,50.460572,30.6258147,https://www.openstreetmap.org/way/115480421
+way,115480445,park_115480445,park,50.4576869,30.6157323,https://www.openstreetmap.org/way/115480445
+way,115480742,park_115480742,park,50.4567328,30.6119708,https://www.openstreetmap.org/way/115480742
+way,117430761,Чернігівська площа,bridge,50.4608708,30.6297708,https://www.openstreetmap.org/way/117430761
+way,117430773,bridge_117430773,bridge,50.4599714,30.6305604,https://www.openstreetmap.org/way/117430773
+way,117430792,Чернігівська площа,bridge,50.460811,30.6295508,https://www.openstreetmap.org/way/117430792
+way,117430797,bridge_117430797,bridge,50.4608333,30.6296329,https://www.openstreetmap.org/way/117430797
+way,117430801,bridge_117430801,bridge,50.4607863,30.6294615,https://www.openstreetmap.org/way/117430801
+way,120735886,Русанівська набережна,park,50.4393499,30.5901238,https://www.openstreetmap.org/way/120735886
+way,123448525,park_123448525,park,50.4445787,30.6235509,https://www.openstreetmap.org/way/123448525
+way,125835877,park_125835877,park,50.4456392,30.6121624,https://www.openstreetmap.org/way/125835877
+way,126381283,park_126381283,park,50.4444308,30.6215839,https://www.openstreetmap.org/way/126381283
+way,130231492,bridge_130231492,bridge,50.4158541,30.5846559,https://www.openstreetmap.org/way/130231492
+way,130676843,park_130676843,park,50.4066976,30.6269285,https://www.openstreetmap.org/way/130676843
+way,132159607,bridge_132159607,bridge,50.4553136,30.6100948,https://www.openstreetmap.org/way/132159607
+way,132159623,bridge_132159623,bridge,50.4552472,30.609866,https://www.openstreetmap.org/way/132159623
+way,132195709,bridge_132195709,bridge,50.4462805,30.5911058,https://www.openstreetmap.org/way/132195709
+way,132195710,bridge_132195710,bridge,50.4462697,30.5908784,https://www.openstreetmap.org/way/132195710
+way,132636724,bridge_132636724,bridge,50.4382252,30.6124841,https://www.openstreetmap.org/way/132636724
+way,132636726,bridge_132636726,bridge,50.438386,30.6122918,https://www.openstreetmap.org/way/132636726
+way,133388569,Патріарший Собор Воскресіння Христового,church,50.4524675,30.5870191,https://www.openstreetmap.org/way/133388569
+way,134670453,bridge_134670453,bridge,50.427374,30.5819901,https://www.openstreetmap.org/way/134670453
+way,134673769,bridge_134673769,bridge,50.4290091,30.635286,https://www.openstreetmap.org/way/134673769
+way,135012563,park_135012563,park,50.4543538,30.614342,https://www.openstreetmap.org/way/135012563
+way,136404203,bridge_136404203,bridge,50.4204968,30.6042592,https://www.openstreetmap.org/way/136404203
+way,136489735,Сквер імені Кастуся Калиновського,park,50.436481,30.6471978,https://www.openstreetmap.org/way/136489735
+way,138274976,park_138274976,park,50.4496234,30.6213331,https://www.openstreetmap.org/way/138274976
+way,140992306,bridge_140992306,bridge,50.4608934,30.6298541,https://www.openstreetmap.org/way/140992306
+way,147973950,bridge_147973950,bridge,50.3984136,30.6345819,https://www.openstreetmap.org/way/147973950
+way,147973957,bridge_147973957,bridge,50.3983544,30.6341944,https://www.openstreetmap.org/way/147973957
+way,149415105,Євангельська церква «Надія»,church,50.4103547,30.6373081,https://www.openstreetmap.org/way/149415105
+way,149586502,Hillsong Church Kyiv,church,50.4562866,30.6056682,https://www.openstreetmap.org/way/149586502
+way,149714759,bridge_149714759,bridge,50.4671649,30.6062002,https://www.openstreetmap.org/way/149714759
+way,149714824,bridge_149714824,bridge,50.4650654,30.6035119,https://www.openstreetmap.org/way/149714824
+way,149716093,bridge_149716093,bridge,50.4696505,30.6083819,https://www.openstreetmap.org/way/149716093
+way,150178365,church_150178365,church,50.4463062,30.614382,https://www.openstreetmap.org/way/150178365
+way,155797671,bridge_155797671,bridge,50.4271938,30.5821224,https://www.openstreetmap.org/way/155797671
+way,158604516,Свято-Ольгинський собор,church,50.4110602,30.6543336,https://www.openstreetmap.org/way/158604516
+way,158604523,Церква святого благовірного князя Всеволода-Гавриїла,church,50.411421,30.6544869,https://www.openstreetmap.org/way/158604523
+way,158653008,bridge_158653008,bridge,50.3923746,30.5973947,https://www.openstreetmap.org/way/158653008
+way,158845957,church_158845957,church,50.4144315,30.6678261,https://www.openstreetmap.org/way/158845957
+way,159146289,Храм святого Феодосія Чернигівського,church,50.4308009,30.6499073,https://www.openstreetmap.org/way/159146289
+way,160674694,bridge_160674694,bridge,50.4517282,30.597912,https://www.openstreetmap.org/way/160674694
+way,160977034,bridge_160977034,bridge,50.461776,30.5992945,https://www.openstreetmap.org/way/160977034
+way,160977038,bridge_160977038,bridge,50.4615504,30.5982067,https://www.openstreetmap.org/way/160977038
+way,161019904,Святого благовірного князя Олега Брянського,church,50.4226404,30.6374965,https://www.openstreetmap.org/way/161019904
+way,163212901,bridge_163212901,bridge,50.3864007,30.6011412,https://www.openstreetmap.org/way/163212901
+way,165013823,bridge_165013823,bridge,50.4323396,30.5928108,https://www.openstreetmap.org/way/165013823
+way,165013826,bridge_165013826,bridge,50.4323595,30.592582,https://www.openstreetmap.org/way/165013826
+way,165015619,church_165015619,church,50.4272108,30.5917403,https://www.openstreetmap.org/way/165015619
+way,165741935,bridge_165741935,bridge,50.4620184,30.6003071,https://www.openstreetmap.org/way/165741935
+way,167243324,bridge_167243324,bridge,50.4398049,30.6082655,https://www.openstreetmap.org/way/167243324
+way,167243336,bridge_167243336,bridge,50.4396878,30.6083229,https://www.openstreetmap.org/way/167243336
+way,167426163,park_167426163,park,50.44562,30.5952437,https://www.openstreetmap.org/way/167426163
+way,168759536,bridge_168759536,bridge,50.4611989,30.5967695,https://www.openstreetmap.org/way/168759536
+way,168759537,bridge_168759537,bridge,50.4613358,30.5971946,https://www.openstreetmap.org/way/168759537
+way,171668370,church_171668370,church,50.4247164,30.6040061,https://www.openstreetmap.org/way/171668370
+way,175449957,bridge_175449957,bridge,50.4291324,30.6355692,https://www.openstreetmap.org/way/175449957
+way,181314906,bridge_181314906,bridge,50.4212184,30.6058508,https://www.openstreetmap.org/way/181314906
+way,181314907,bridge_181314907,bridge,50.4214927,30.6059709,https://www.openstreetmap.org/way/181314907
+way,181314915,bridge_181314915,bridge,50.4213767,30.6060489,https://www.openstreetmap.org/way/181314915
+way,186442082,bridge_186442082,bridge,50.4388531,30.6740553,https://www.openstreetmap.org/way/186442082
+way,186442093,bridge_186442093,bridge,50.4382878,30.6744808,https://www.openstreetmap.org/way/186442093
+way,186442095,bridge_186442095,bridge,50.4381659,30.6745567,https://www.openstreetmap.org/way/186442095
+way,186442097,bridge_186442097,bridge,50.438605,30.674109,https://www.openstreetmap.org/way/186442097
+way,187906881,Храм Святого Апостола Андрія Первозванного ПЦУ,church,50.3939204,30.6188463,https://www.openstreetmap.org/way/187906881
+way,192229629,park_192229629,park,50.4287148,30.637773,https://www.openstreetmap.org/way/192229629
+way,192592965,church_192592965,church,50.427204,30.6382013,https://www.openstreetmap.org/way/192592965
+way,194137740,bridge_194137740,bridge,50.452589,30.5977277,https://www.openstreetmap.org/way/194137740
+way,206509079,Сквер імені Павла Горянського,park,50.4294937,30.6604589,https://www.openstreetmap.org/way/206509079
+way,214309727,bridge_214309727,bridge,50.3924597,30.5978377,https://www.openstreetmap.org/way/214309727
+way,224093901,bridge_224093901,bridge,50.382373,30.6704408,https://www.openstreetmap.org/way/224093901
+way,226263944,Парк Радунка,park,50.4853703,30.5848087,https://www.openstreetmap.org/way/226263944
+way,232412052,bridge_232412052,bridge,50.4291318,30.6356588,https://www.openstreetmap.org/way/232412052
+way,232414614,bridge_232414614,bridge,50.4635516,30.656027,https://www.openstreetmap.org/way/232414614
+way,238709026,park_238709026,park,50.436632,30.6217403,https://www.openstreetmap.org/way/238709026
+way,239825288,bridge_239825288,bridge,50.460845,30.6296761,https://www.openstreetmap.org/way/239825288
+way,239825290,bridge_239825290,bridge,50.4598173,30.6303837,https://www.openstreetmap.org/way/239825290
+way,244104746,Південний міст,bridge,50.3950408,30.5887981,https://www.openstreetmap.org/way/244104746
+way,246184120,church_246184120,church,50.4230846,30.6666736,https://www.openstreetmap.org/way/246184120
+way,246218005,Сквер з фонтаном,park,50.4108691,30.647645,https://www.openstreetmap.org/way/246218005
+way,264918912,bridge_264918912,bridge,50.3946988,30.5939018,https://www.openstreetmap.org/way/264918912
+way,265687828,Храм Миколи Святоші ПЦУ,church,50.4606314,30.6450957,https://www.openstreetmap.org/way/265687828
+way,266169024,bridge_266169024,bridge,50.448109,30.5844885,https://www.openstreetmap.org/way/266169024
+way,266169026,bridge_266169026,bridge,50.4533332,30.6033956,https://www.openstreetmap.org/way/266169026
+way,267066292,park_267066292,park,50.4411459,30.5977811,https://www.openstreetmap.org/way/267066292
+way,267066294,park_267066294,park,50.4366672,30.5981509,https://www.openstreetmap.org/way/267066294
+way,290068440,park_290068440,park,50.4351762,30.6454149,https://www.openstreetmap.org/way/290068440
+way,309658326,bridge_309658326,bridge,50.4535819,30.6031676,https://www.openstreetmap.org/way/309658326
+way,310338172,park_310338172,park,50.4530714,30.6200753,https://www.openstreetmap.org/way/310338172
+way,312155489,bridge_312155489,bridge,50.4612743,30.6353162,https://www.openstreetmap.org/way/312155489
+way,312167701,park_312167701,park,50.446988,30.6130193,https://www.openstreetmap.org/way/312167701
+way,312167706,park_312167706,park,50.4482178,30.6175776,https://www.openstreetmap.org/way/312167706
+way,316520766,"Церква-каплиця мучениць Віри, Надії, Любові та матері їх Софії",church,50.3965994,30.6304268,https://www.openstreetmap.org/way/316520766
+way,333509803,bridge_333509803,bridge,50.4645236,30.640916,https://www.openstreetmap.org/way/333509803
+way,351976609,Парафія на честь ікони Б.М. Спасительниця утопаючих,church,50.4507565,30.5992825,https://www.openstreetmap.org/way/351976609
+way,351976660,park_351976660,park,50.4423453,30.6040686,https://www.openstreetmap.org/way/351976660
+way,353278493,bridge_353278493,bridge,50.4503181,30.6079995,https://www.openstreetmap.org/way/353278493
+way,358112184,park_358112184,park,50.4050524,30.6181995,https://www.openstreetmap.org/way/358112184
+way,359882213,Храм святих жінок-мироносиць,church,50.4410532,30.629031,https://www.openstreetmap.org/way/359882213
+way,362067204,Римо-Католицький костел,church,50.4364688,30.6356283,https://www.openstreetmap.org/way/362067204
+way,372515361,bridge_372515361,bridge,50.4163289,30.5864128,https://www.openstreetmap.org/way/372515361
+way,372515375,bridge_372515375,bridge,50.4164201,30.5877927,https://www.openstreetmap.org/way/372515375
+way,391216512,Успіння Пресвятої Діви Марії,church,50.3987099,30.6249545,https://www.openstreetmap.org/way/391216512
+way,391849355,Храм св. апостолів Петра і Павла,church,50.4002124,30.6418595,https://www.openstreetmap.org/way/391849355
+way,404717687,Храм Успіння Пресвятої Богородиці,church,50.4090524,30.6194458,https://www.openstreetmap.org/way/404717687
+way,420816031,park_420816031,park,50.4720435,30.6233104,https://www.openstreetmap.org/way/420816031
+way,421282035,church_421282035,church,50.4043494,30.6272337,https://www.openstreetmap.org/way/421282035
+way,425182756,"Євангельська церква ""Християнська надія""",church,50.4666802,30.6106732,https://www.openstreetmap.org/way/425182756
+way,435440979,bridge_435440979,bridge,50.4202202,30.6065534,https://www.openstreetmap.org/way/435440979
+way,436219061,bridge_436219061,bridge,50.420911,30.6046645,https://www.openstreetmap.org/way/436219061
+way,436219062,bridge_436219062,bridge,50.4210655,30.60456,https://www.openstreetmap.org/way/436219062
+way,436401202,Церква Преподобного Серафіма Саровського,church,50.457211,30.6255328,https://www.openstreetmap.org/way/436401202
+way,444385031,bridge_444385031,bridge,50.4697451,30.6513681,https://www.openstreetmap.org/way/444385031
+way,452833462,bridge_452833462,bridge,50.4457601,30.6487635,https://www.openstreetmap.org/way/452833462
+way,452833465,вулиця Роберта Лісовського,bridge,50.4466244,30.6509103,https://www.openstreetmap.org/way/452833465
+way,452833471,bridge_452833471,bridge,50.4491989,30.6577135,https://www.openstreetmap.org/way/452833471
+way,462588709,bridge_462588709,bridge,50.4123702,30.6173139,https://www.openstreetmap.org/way/462588709
+way,483088890,bridge_483088890,bridge,50.3951498,30.5851064,https://www.openstreetmap.org/way/483088890
+way,483088891,bridge_483088891,bridge,50.3951061,30.5851076,https://www.openstreetmap.org/way/483088891
+way,485229662,Алматинська вулиця,bridge,50.4402535,30.6567284,https://www.openstreetmap.org/way/485229662
+way,487042987,park_487042987,park,50.4543389,30.5846866,https://www.openstreetmap.org/way/487042987
+way,488920503,park_488920503,park,50.4510503,30.5860502,https://www.openstreetmap.org/way/488920503
+way,489368222,Церква Святої Трійці ПЦУ,church,50.4793892,30.6687481,https://www.openstreetmap.org/way/489368222
+way,490884303,УПЦ МП,church,50.4037284,30.6646889,https://www.openstreetmap.org/way/490884303
+way,491085496,church_491085496,church,50.4293855,30.6601971,https://www.openstreetmap.org/way/491085496
+way,496151668,church_496151668,church,50.446101,30.6128794,https://www.openstreetmap.org/way/496151668
+way,496151669,Меморіал чорнобильцям,monument,50.4462654,30.6124159,https://www.openstreetmap.org/way/496151669
+way,496151670,Марія Магдалина,monument,50.445915,30.6135086,https://www.openstreetmap.org/way/496151670
+way,496168220,park_496168220,park,50.4464018,30.6244353,https://www.openstreetmap.org/way/496168220
+way,496426692,"Парк-сквер ВАТ ""Хімволокно""",park,50.4543867,30.6408786,https://www.openstreetmap.org/way/496426692
+way,499145908,park_499145908,park,50.4437493,30.6698228,https://www.openstreetmap.org/way/499145908
+way,502230390,"""Сад каменів"" міні-парк",park,50.4574446,30.6075329,https://www.openstreetmap.org/way/502230390
+way,502230410,park_502230410,park,50.4611347,30.6069849,https://www.openstreetmap.org/way/502230410
+way,507887586,park_507887586,park,50.443693,30.6640764,https://www.openstreetmap.org/way/507887586
+way,510866734,park_510866734,park,50.3927816,30.6241127,https://www.openstreetmap.org/way/510866734
+way,512263566,bridge_512263566,bridge,50.3954864,30.6165258,https://www.openstreetmap.org/way/512263566
+way,516772889,park_516772889,park,50.4095991,30.6691677,https://www.openstreetmap.org/way/516772889
+way,516774362,park_516774362,park,50.4105383,30.6680448,https://www.openstreetmap.org/way/516774362
+way,520057357,park_520057357,park,50.4556421,30.6086242,https://www.openstreetmap.org/way/520057357
+way,520057359,park_520057359,park,50.4562823,30.6102082,https://www.openstreetmap.org/way/520057359
+way,522833960,Храм Святого Великомученика і Цілителя Пантелеймона,church,50.4485385,30.5992219,https://www.openstreetmap.org/way/522833960
+way,525233479,church_525233479,church,50.4720033,30.6208363,https://www.openstreetmap.org/way/525233479
+way,525363663,Собор Різдва Христового,church,50.4248519,30.6044199,https://www.openstreetmap.org/way/525363663
+way,536122487,park_536122487,park,50.4773144,30.5902246,https://www.openstreetmap.org/way/536122487
+way,544322904,park_544322904,park,50.3951771,30.6454109,https://www.openstreetmap.org/way/544322904
+way,544324164,park_544324164,park,50.3930865,30.6504477,https://www.openstreetmap.org/way/544324164
+way,548409798,Сквер на Шолом-Алейхема,park,50.4729806,30.6325947,https://www.openstreetmap.org/way/548409798
+way,548409800,Парк ДТЕУ,park,50.465209,30.6382675,https://www.openstreetmap.org/way/548409800
+way,552159751,park_552159751,park,50.4273096,30.6417792,https://www.openstreetmap.org/way/552159751
+way,558332375,Церква-каплиця св. Духа,church,50.444761,30.6001033,https://www.openstreetmap.org/way/558332375
+way,558886764,Дерев'яний майданчик відпочинку,park,50.4217215,30.6432983,https://www.openstreetmap.org/way/558886764
+way,582283566,Сквер імені Івана Миколайчука,park,50.4312539,30.5956747,https://www.openstreetmap.org/way/582283566
+way,606761329,Сквер на Вербицького 8,park,50.4093068,30.6535745,https://www.openstreetmap.org/way/606761329
+way,609149729,park_609149729,park,50.4557645,30.5941557,https://www.openstreetmap.org/way/609149729
+way,612926380,park_612926380,park,50.4592847,30.6385251,https://www.openstreetmap.org/way/612926380
+way,614289288,"Лівобережний ботанічний сад, громадська інициатива",park,50.4345573,30.6036823,https://www.openstreetmap.org/way/614289288
+way,615624802,Новоапостольська церква,church,50.4292288,30.6060864,https://www.openstreetmap.org/way/615624802
+way,617487575,Церква на честь ікони Божої Матері «Іверська»,church,50.3918516,30.6288458,https://www.openstreetmap.org/way/617487575
+way,617709419,Будинок Небесного Архітектора,church,50.4696173,30.6441691,https://www.openstreetmap.org/way/617709419
+way,619499416,Сквер Бучми,park,50.4315647,30.6041733,https://www.openstreetmap.org/way/619499416
+way,619903152,park_619903152,park,50.4660298,30.6404507,https://www.openstreetmap.org/way/619903152
+way,621346445,church_621346445,church,50.4380781,30.6467138,https://www.openstreetmap.org/way/621346445
+way,624808160,park_624808160,park,50.4478662,30.5955819,https://www.openstreetmap.org/way/624808160
+way,627564617,Штучний міст,bridge,50.4699291,30.6090674,https://www.openstreetmap.org/way/627564617
+way,627902619,park_627902619,park,50.4590004,30.638701,https://www.openstreetmap.org/way/627902619
+way,628992694,park_628992694,park,50.4442952,30.6222961,https://www.openstreetmap.org/way/628992694
+way,639984395,Алматинська вулиця,bridge,50.4403203,30.6567158,https://www.openstreetmap.org/way/639984395
+way,655171316,park_655171316,park,50.4463871,30.6407353,https://www.openstreetmap.org/way/655171316
+way,680871147,Соборна церква преображення Господнього УАПЦ-К,church,50.3904055,30.6148704,https://www.openstreetmap.org/way/680871147
+way,697823672,парк дитячого дозвілля «Змійка»,park,50.4357766,30.6170643,https://www.openstreetmap.org/way/697823672
+way,701889322,park_701889322,park,50.3954667,30.6263214,https://www.openstreetmap.org/way/701889322
+way,737941896,Згромадження Сестер Пресвятої Родини,church,50.465643,30.5855235,https://www.openstreetmap.org/way/737941896
+way,738711299,Сквер,park,50.4664681,30.6372568,https://www.openstreetmap.org/way/738711299
+way,744705617,park_744705617,park,50.477564,30.6041295,https://www.openstreetmap.org/way/744705617
+way,751150096,Рекреаційна зона «Тельбін»,park,50.4263597,30.6082293,https://www.openstreetmap.org/way/751150096
+way,756191580,Південний міст,bridge,50.3948106,30.5887799,https://www.openstreetmap.org/way/756191580
+way,758187626,bridge_758187626,bridge,50.4423747,30.672726,https://www.openstreetmap.org/way/758187626
+way,760821264,bridge_760821264,bridge,50.4646237,30.6732596,https://www.openstreetmap.org/way/760821264
+way,760821267,bridge_760821267,bridge,50.4643258,30.6786474,https://www.openstreetmap.org/way/760821267
+way,766838624,bridge_766838624,bridge,50.4646113,30.6739182,https://www.openstreetmap.org/way/766838624
+way,775242089,Парк Привокзальний,park,50.4299061,30.6467431,https://www.openstreetmap.org/way/775242089
+way,827746280,bridge_827746280,bridge,50.4273402,30.581884,https://www.openstreetmap.org/way/827746280
+way,827746281,bridge_827746281,bridge,50.4272288,30.5822612,https://www.openstreetmap.org/way/827746281
+way,845959363,bridge_845959363,bridge,50.4198476,30.6401575,https://www.openstreetmap.org/way/845959363
+way,851278453,Сквер міста-побратима Тампере,park,50.444514,30.610929,https://www.openstreetmap.org/way/851278453
+way,947845667,park_947845667,park,50.419313,30.5921256,https://www.openstreetmap.org/way/947845667
+way,962005484,bridge_962005484,bridge,50.4677651,30.6553596,https://www.openstreetmap.org/way/962005484
+way,962005485,bridge_962005485,bridge,50.4677202,30.6551776,https://www.openstreetmap.org/way/962005485
+way,985065466,bridge_985065466,bridge,50.4382181,30.6743424,https://www.openstreetmap.org/way/985065466
+way,985065467,bridge_985065467,bridge,50.4383405,30.6742666,https://www.openstreetmap.org/way/985065467
+way,993033746,Сквер ім. Кошиця,park,50.4055665,30.6402209,https://www.openstreetmap.org/way/993033746
+way,1033740405,park_1033740405,park,50.4262267,30.654919,https://www.openstreetmap.org/way/1033740405
+way,1033740406,Сквер з фонтаном,park,50.4272311,30.6544221,https://www.openstreetmap.org/way/1033740406
+way,1033740460,Сквер Закоханих,park,50.4274182,30.6557963,https://www.openstreetmap.org/way/1033740460
+way,1039220089,bridge_1039220089,bridge,50.4469768,30.6518628,https://www.openstreetmap.org/way/1039220089
+way,1044749889,Храм святителя Миколая Чудотворця,church,50.4588553,30.5901743,https://www.openstreetmap.org/way/1044749889
+way,1068796796,park_1068796796,park,50.4218845,30.6474305,https://www.openstreetmap.org/way/1068796796
+way,1075537910,bridge_1075537910,bridge,50.459987,30.6304669,https://www.openstreetmap.org/way/1075537910
+way,1075537911,bridge_1075537911,bridge,50.4599335,30.630503,https://www.openstreetmap.org/way/1075537911
+way,1075537912,bridge_1075537912,bridge,50.459886,30.6305374,https://www.openstreetmap.org/way/1075537912
+way,1075537914,bridge_1075537914,bridge,50.4598254,30.6300073,https://www.openstreetmap.org/way/1075537914
+way,1075537915,bridge_1075537915,bridge,50.459834,30.6301147,https://www.openstreetmap.org/way/1075537915
+way,1075537916,bridge_1075537916,bridge,50.4597881,30.6300324,https://www.openstreetmap.org/way/1075537916
+way,1076575150,bridge_1076575150,bridge,50.4599334,30.6305861,https://www.openstreetmap.org/way/1076575150
+way,1076580859,bridge_1076580859,bridge,50.4556039,30.61192,https://www.openstreetmap.org/way/1076580859
+way,1078764124,bridge_1078764124,bridge,50.4402944,30.65672,https://www.openstreetmap.org/way/1078764124
+way,1078764126,bridge_1078764126,bridge,50.4402771,30.6567232,https://www.openstreetmap.org/way/1078764126
+way,1084069417,Фітнес-парк Озеро Лебедине,park,50.4038245,30.6437693,https://www.openstreetmap.org/way/1084069417
+way,1087554436,Сквер на бульварі І.Шамо,park,50.4366409,30.5985714,https://www.openstreetmap.org/way/1087554436
+way,1087554669,Паркова зона,park,50.412807,30.6390051,https://www.openstreetmap.org/way/1087554669
+way,1093153007,park_1093153007,park,50.459334,30.5807103,https://www.openstreetmap.org/way/1093153007
+way,1101072815,park_1101072815,park,50.4319953,30.6140279,https://www.openstreetmap.org/way/1101072815
+way,1105499454,Храм Світлописаного Образу Божої Матері УПЦ,church,50.4237971,30.6753068,https://www.openstreetmap.org/way/1105499454
+way,1160375058,park_1160375058,park,50.3957,30.625755,https://www.openstreetmap.org/way/1160375058
+way,1164105597,Харківське шосе,bridge,50.4290471,30.6353624,https://www.openstreetmap.org/way/1164105597
+way,1167695346,bridge_1167695346,bridge,50.3804475,30.6079358,https://www.openstreetmap.org/way/1167695346
+way,1180192987,park_1180192987,park,50.4035129,30.6288352,https://www.openstreetmap.org/way/1180192987
+way,1181036387,church_1181036387,church,50.4059987,30.6741512,https://www.openstreetmap.org/way/1181036387
+way,1181036488,Храм Святих Апостолів Петра і Павла,church,50.4023659,30.6771885,https://www.openstreetmap.org/way/1181036488
+way,1187815691,bridge_1187815691,bridge,50.4166476,30.5948546,https://www.openstreetmap.org/way/1187815691
+way,1187822041,bridge_1187822041,bridge,50.4156981,30.5837875,https://www.openstreetmap.org/way/1187822041
+way,1188242743,park_1188242743,park,50.4084768,30.6608494,https://www.openstreetmap.org/way/1188242743
+way,1188364418,park_1188364418,park,50.4219461,30.6580305,https://www.openstreetmap.org/way/1188364418
+way,1188938556,park_1188938556,park,50.4411522,30.6287975,https://www.openstreetmap.org/way/1188938556
+way,1190708206,Храм Антонія і Феодосія,church,50.4622145,30.615035,https://www.openstreetmap.org/way/1190708206
+way,1195602273,park_1195602273,park,50.3950749,30.6216048,https://www.openstreetmap.org/way/1195602273
+way,1200617382,bridge_1200617382,bridge,50.4492929,30.6581056,https://www.openstreetmap.org/way/1200617382
+way,1200617384,bridge_1200617384,bridge,50.4490488,30.6572461,https://www.openstreetmap.org/way/1200617384
+way,1204820790,bridge_1204820790,bridge,50.4402136,30.6567365,https://www.openstreetmap.org/way/1204820790
+way,1210165199,church_1210165199,church,50.3925241,30.6504752,https://www.openstreetmap.org/way/1210165199
+way,1218867616,bridge_1218867616,bridge,50.4043156,30.6114759,https://www.openstreetmap.org/way/1218867616
+way,1223721337,park_1223721337,park,50.4488492,30.6762863,https://www.openstreetmap.org/way/1223721337
+way,1229109987,park_1229109987,park,50.4033749,30.610819,https://www.openstreetmap.org/way/1229109987
+way,1236330400,bridge_1236330400,bridge,50.4041335,30.6126536,https://www.openstreetmap.org/way/1236330400
+way,1241655230,проспект Петра Григоренка,bridge,50.3983711,30.634301,https://www.openstreetmap.org/way/1241655230
+way,1243539755,bridge_1243539755,bridge,50.4185541,30.6124296,https://www.openstreetmap.org/way/1243539755
+way,1251942388,bridge_1251942388,bridge,50.3905039,30.6016675,https://www.openstreetmap.org/way/1251942388
+way,1279210200,park_1279210200,park,50.4486553,30.6167314,https://www.openstreetmap.org/way/1279210200
+way,1282234657,Курган Безсмертя,monument,50.4612074,30.6058162,https://www.openstreetmap.org/way/1282234657
+way,1284485471,bridge_1284485471,bridge,50.3928308,30.598976,https://www.openstreetmap.org/way/1284485471
+way,1310484503,"Храм на честь ікони Божої Матері ""Скоропослушниця""",church,50.3916713,30.6290831,https://www.openstreetmap.org/way/1310484503
+way,1316365138,Сквер Кусум,park,50.449349,30.6808541,https://www.openstreetmap.org/way/1316365138
+way,1363990905,Сквер ім. Сосюри,park,50.4364907,30.6312998,https://www.openstreetmap.org/way/1363990905
+way,1377767783,park_1377767783,park,50.4482692,30.595615,https://www.openstreetmap.org/way/1377767783
+way,1377767784,park_1377767784,park,50.4472072,30.598053,https://www.openstreetmap.org/way/1377767784
+way,1377792253,park_1377792253,park,50.4479944,30.5949947,https://www.openstreetmap.org/way/1377792253
+way,1417151003,park_1417151003,park,50.4492655,30.673528,https://www.openstreetmap.org/way/1417151003
+way,1418751225,park_1418751225,park,50.4738167,30.6188788,https://www.openstreetmap.org/way/1418751225
+way,1420920677,Храм св. мучениці Параскеві,church,50.3976523,30.6142475,https://www.openstreetmap.org/way/1420920677
+way,1421970140,park_1421970140,park,50.4591971,30.6170672,https://www.openstreetmap.org/way/1421970140
+way,1431700832,bridge_1431700832,bridge,50.4036701,30.609114,https://www.openstreetmap.org/way/1431700832
+way,1432238837,park_1432238837,park,50.3932908,30.6353528,https://www.openstreetmap.org/way/1432238837
+way,1434420968,park_1434420968,park,50.4324694,30.6005255,https://www.openstreetmap.org/way/1434420968
+way,1502558604,bridge_1502558604,bridge,50.3954125,30.6159303,https://www.openstreetmap.org/way/1502558604
+way,1527616997,park_1527616997,park,50.4324245,30.6216889,https://www.openstreetmap.org/way/1527616997
+way,1527617001,park_1527617001,park,50.4321731,30.6196221,https://www.openstreetmap.org/way/1527617001
+way,1554605798,bridge_1554605798,bridge,50.3980085,30.5715991,https://www.openstreetmap.org/way/1554605798
+way,1571259675,Південний міст,bridge,50.3943571,30.5978395,https://www.openstreetmap.org/way/1571259675
+way,1571259676,Південний міст,bridge,50.3943747,30.5973713,https://www.openstreetmap.org/way/1571259676
+way,1571259677,Південний міст,bridge,50.3943642,30.5976305,https://www.openstreetmap.org/way/1571259677
+way,1571259678,Південний міст,bridge,50.3945868,30.5978501,https://www.openstreetmap.org/way/1571259678
+way,1571259679,Південний міст,bridge,50.3946041,30.59746,https://www.openstreetmap.org/way/1571259679
+way,1578268005,bridge_1578268005,bridge,50.3950862,30.5891844,https://www.openstreetmap.org/way/1578268005
+relation,1655107,Гідропарк,park,50.4484495,30.5743793,https://www.openstreetmap.org/relation/1655107
+relation,4147674,park_4147674,park,50.4574217,30.6222592,https://www.openstreetmap.org/relation/4147674
+relation,4683243,Парк «Кіото»,park,50.4636057,30.6362664,https://www.openstreetmap.org/relation/4683243
+relation,8293542,Прибережний парк,park,50.4084993,30.6018993,https://www.openstreetmap.org/relation/8293542
+relation,8873732,Тельбін,park,50.4261762,30.6063348,https://www.openstreetmap.org/relation/8873732
+relation,16148190,"Сквер ""Лівобережний""",park,50.4485617,30.5999018,https://www.openstreetmap.org/relation/16148190
+relation,20579334,Сквер ім. Святослава Алексапольського,park,50.4249513,30.6039419,https://www.openstreetmap.org/relation/20579334
+relation,21785678,park_21785678,park,50.4372404,30.6222494,https://www.openstreetmap.org/relation/21785678
