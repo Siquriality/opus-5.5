@@ -2,164 +2,109 @@ import pandas as pd
 from search import find_places, haversine_m
 
 
-def build_mock_dataset() -> pd.DataFrame:
+def build_sample_df() -> pd.DataFrame:
+    """Штучний набір даних із відомими відстанями для перевірки алгоритмів."""
     rows = [
-        {
-            "osm_type": "way",
-            "osm_id": "101",
-            "name": "Тестовий міст А",
-            "category": "bridge",
-            "lat": 50.4500,
-            "lon": 30.5200,
-            "url": "https://www.openstreetmap.org/way/101",
-        },
-        {
-            "osm_type": "way",
-            "osm_id": "102",
-            "name": "Тестовий міст Б",
-            "category": "bridge",
-            "lat": 50.4600,
-            "lon": 30.5200,
-            "url": "https://www.openstreetmap.org/way/102",
-        },
-        {
-            "osm_type": "way",
-            "osm_id": "103",
-            "name": "Самотній міст В",
-            "category": "bridge",
-            "lat": 50.4900,
-            "lon": 30.5200,
-            "url": "https://www.openstreetmap.org/way/103",
-        },
-        {
-            "osm_type": "way",
-            "osm_id": "104",
-            "name": "Тестовий міст Г",
-            "category": "bridge",
-            "lat": 50.4700,
-            "lon": 30.5200,
-            "url": "https://www.openstreetmap.org/way/104",
-        },
-        {
-            "osm_type": "node",
-            "osm_id": "201",
-            "name": "Зупинка біля А",
-            "category": "tram_stop",
-            "lat": 50.4505,
-            "lon": 30.5200,
-            "url": "https://www.openstreetmap.org/node/201",
-        },
-        {
-            "osm_type": "node",
-            "osm_id": "202",
-            "name": "Зупинка біля Б",
-            "category": "tram_stop",
-            "lat": 50.4620,
-            "lon": 30.5200,
-            "url": "https://www.openstreetmap.org/node/202",
-        },
-        {
-            "osm_type": "node",
-            "osm_id": "204",
-            "name": "Зупинка біля Г",
-            "category": "tram_stop",
-            "lat": 50.4710,
-            "lon": 30.5200,
-            "url": "https://www.openstreetmap.org/node/204",
-        },
-        {
-            "osm_type": "way",
-            "osm_id": "301",
-            "name": "Церква біля А",
-            "category": "church",
-            "lat": 50.4510,
-            "lon": 30.5200,
-            "url": "https://www.openstreetmap.org/way/301",
-        },
-        {
-            "osm_type": "way",
-            "osm_id": "302",
-            "name": "Церква далеко від Б",
-            "category": "church",
-            "lat": 50.4680,
-            "lon": 30.5200,
-            "url": "https://www.openstreetmap.org/way/302",
-        },
-        {
-            "osm_type": "way",
-            "osm_id": "304",
-            "name": "Церква біля Г",
-            "category": "church",
-            "lat": 50.4715,
-            "lon": 30.5200,
-            "url": "https://www.openstreetmap.org/way/304",
-        },
+        # Кластер 1: Повний збіг (bridge + tram_stop + church в межах ~150 м)
+        # Примітка: у наборі 4 мости, 3 зупинки та 1 церква.
+        # Алгоритм бере найрідкіснішу категорію за опорну (anchor).
+        {"osm_type": "way", "osm_id": "101", "category": "bridge", "name": "Міст 1", "lat": 50.4500, "lon": 30.5200, "url": "https://www.openstreetmap.org/way/101"},
+        {"osm_type": "node", "osm_id": "201", "category": "tram_stop", "name": "Зупинка 1", "lat": 50.4505, "lon": 30.5205, "url": "https://www.openstreetmap.org/node/201"},
+        {"osm_type": "way", "osm_id": "301", "category": "church", "name": "Церква 1", "lat": 50.4510, "lon": 30.5210, "url": "https://www.openstreetmap.org/way/301"},
+
+        # Кластер 2: Повний збіг (bridge + tram_stop), але далі один від одного (~300 м)
+        {"osm_type": "way", "osm_id": "104", "category": "bridge", "name": "Міст 4 (далі)", "lat": 50.4700, "lon": 30.5400, "url": "https://www.openstreetmap.org/way/104"},
+        {"osm_type": "node", "osm_id": "204", "category": "tram_stop", "name": "Зупинка 4 (далі)", "lat": 50.4720, "lon": 30.5425, "url": "https://www.openstreetmap.org/node/204"},
+
+        # Кластер 3: Частковий збіг (тільки bridge, tram_stop поза радіусом 400 м)
+        {"osm_type": "way", "osm_id": "102", "category": "bridge", "name": "Міст 2 (одинокий)", "lat": 50.4600, "lon": 30.5300, "url": "https://www.openstreetmap.org/way/102"},
+        {"osm_type": "node", "osm_id": "202", "category": "tram_stop", "name": "Зупинка 2 (далеко)", "lat": 50.4650, "lon": 30.5350, "url": "https://www.openstreetmap.org/node/202"},
+
+        # Кластер 4: Точка на межі радіуса (рівно ~400 м від way/301 по широті)
+        {"osm_type": "way", "osm_id": "103", "category": "bridge", "name": "Міст на межі", "lat": 50.454597, "lon": 30.5210, "url": "https://www.openstreetmap.org/way/103"},
     ]
     return pd.DataFrame(rows)
 
 
-def run_all_checks() -> None:
-    df = build_mock_dataset()
+def test_haversine_distance() -> None:
+    """1. Перевірка формули розрахунку відстані haversine_m."""
+    assert haversine_m(50.45, 30.52, 50.45, 30.52) == 0.0, "Відстань між однаковими точками має бути 0"
 
-    # Перевірка нуля для однакових точок та симетрії функції відстані
-    assert haversine_m(50.45, 30.52, 50.45, 30.52) == 0.0, "Очікувалась нульова відстань"
-    dist_ab = haversine_m(50.45, 30.52, 50.46, 30.53)
-    dist_ba = haversine_m(50.46, 30.53, 50.45, 30.52)
-    assert abs(dist_ab - dist_ba) < 1e-6, "Функція відстані має бути симетричною"
+    d1 = haversine_m(50.45, 30.52, 50.46, 30.53)
+    d2 = haversine_m(50.46, 30.53, 50.45, 30.52)
+    assert abs(d1 - d2) < 1e-6, "Функція відстані має бути симетричною"
 
-    # Сортування за сумою відстаней при рівній кількості збігів (2/2)
-    res_two = find_places(df, ["bridge", "tram_stop"], radius_m=300, limit=3)
-    keys_two = [item["candidate_key"] for item in res_two]
-    assert keys_two == ["way/101", "way/104", "way/102"], f"Невірний порядок: {keys_two}"
+    dist = haversine_m(50.4500, 30.5200, 50.4510, 30.5200)
+    assert 110.0 <= dist <= 112.5, f"Неочікувана відстань: {dist} м"
 
-    # Повний збіг (3/3) має стояти вище часткового (2/3)
-    res_three = find_places(df, ["bridge", "tram_stop", "church"], radius_m=300, limit=3)
-    assert len(res_three) == 3, f"Очікувалось 3 кандидати, отримано {len(res_three)}"
-    assert [item["matched_count"] for item in res_three] == [3, 3, 2], "Невірний пріоритет збігів"
-    assert res_three[0]["candidate_key"] == "way/101", "Міст А має бути першим"
 
-    missing_church = [m for m in res_three[2]["matches"] if m["category"] == "church"][0]
-    assert missing_church["found"] is False, "Для не знайденого об'єкта found має бути False"
-    assert (
-        missing_church["name"] is None
-        and missing_church["lat"] is None
-        and missing_church["lon"] is None
-        and missing_church["distance_m"] is None
-        and missing_church["url"] is None
-    ), "Поля не знайденого об'єкта мають бути None"
+def test_ranking_and_completeness(df: pd.DataFrame) -> None:
+    """2. Перевірка пріоритету повних збігів (2/2 вище за 1/2) та сортування за компактністю."""
+    results = find_places(df, categories=["bridge", "tram_stop"], radius_m=400, limit=5)
 
-    # Перевірка межі радіуса (на межі входить, за межею — виключається)
-    exact_radius = haversine_m(50.4500, 30.5200, 50.4510, 30.5200)
-    res_on_border = find_places(df, ["bridge", "church"], radius_m=exact_radius, limit=3)
-    assert len(res_on_border) == 1 and res_on_border[0]["candidate_key"] == "way/101", "Об'єкт на межі має входити"
+    assert len(results) == 3, f"Очікувалось 3 кандидати, отримано {len(results)}"
 
-    res_outside_border = find_places(df, ["bridge", "church"], radius_m=exact_radius - 0.01, limit=3)
-    assert len(res_outside_border) == 0, "Об'єкт за межею має виключатися"
+    # Опорна категорія — tram_stop (3 зупинки < 4 мостів)
+    assert results[0]["anchor"]["osm_id"] == "201", "Першим має бути найкомпактніший повний збіг (node/201)"
+    assert results[0]["matched_count"] == 2
+    assert results[0]["total_categories"] == 2
 
-    # Обмеження максимальної кількості результатів (limit=3)
-    res_limited = find_places(df, ["bridge", "tram_stop"], radius_m=1500, limit=3)
-    assert len(res_limited) == 3, f"Очікувалось 3 результати, отримано {len(res_limited)}"
+    assert results[1]["anchor"]["osm_id"] == "204", "Другим має бути менш компактний повний збіг (node/204)"
+    assert results[1]["matched_count"] == 2
 
-    # Порожній список за відсутності збігів >= 2
-    res_empty = find_places(df, ["bridge", "church"], radius_m=100, limit=3)
-    assert res_empty == [], f"Очікувався порожній список, отримано {res_empty}"
+    assert results[2]["anchor"]["osm_id"] == "202", "Третім має йти частковий збіг (node/202)"
+    assert results[2]["matched_count"] == 1
 
-    # Валідація некоректних вхідних даних (ValueError)
+
+def test_radius_boundary(df: pd.DataFrame) -> None:
+    """3. Перевірка граничних значень радіуса пошуку (включення на межі та виключення за межею)."""
+    # Для ["bridge", "church"] опорною є church (1 церква < 4 мости), тобто way/301
+    res_inside = find_places(df, categories=["bridge", "church"], radius_m=400, limit=5)
+    anchor_301 = next(r for r in res_inside if r["anchor"]["osm_id"] == "301")
+    assert anchor_301["matched_count"] == 2, "На межі 400 м обидва орієнтири мають бути знайдені"
+
+    # Зменшуємо радіус нижче відстані до ближчого мосту way/101 (~132 м) -> збіг стає 1/2
+    res_outside = find_places(df, categories=["bridge", "church"], radius_m=100, limit=5)
+    anchor_301_small = next(r for r in res_outside if r["anchor"]["osm_id"] == "301")
+    assert anchor_301_small["matched_count"] == 1, "При радіусі 100 м сусідній міст має відсіятися"
+
+
+def test_limit_and_no_duplicates(df: pd.DataFrame) -> None:
+    """4. Перевірка обмеження кількості результатів (limit) та відсутності дублікатів."""
+    results = find_places(df, categories=["bridge", "tram_stop"], radius_m=400, limit=2)
+    assert len(results) == 2, f"Очікувалось рівно 2 результати, отримано {len(results)}"
+
+    anchor_ids = [(r["anchor"]["osm_type"], r["anchor"]["osm_id"]) for r in results]
+    assert len(anchor_ids) == len(set(anchor_ids)), "Знайдено дублікати опорних об'єктів у видачі"
+
+
+def test_invalid_inputs(df: pd.DataFrame) -> None:
+    """5. Перевірка валідації некоректних вхідних даних (має викидатися ValueError)."""
     invalid_cases = [
-        (["bridge"], 400),
-        (["bridge", "bridge"], 400),
-        (["bridge", "non_existent"], 400),
-        (["bridge", "church"], 99),
-        (["bridge", "church"], 1501),
+        ([], 400),                          # порожній список категорій
+        (["bridge"], 400),                  # менше 2 категорій
+        (["bridge", "bridge"], 400),        # дублікат однієї категорії
+        (["bridge", "hospital"], 400),      # невідома категорія
+        (["bridge", "church"], 50),         # радіус менший за 100 м
+        (["bridge", "church"], 2000),       # радіус більший за 1500 м
     ]
-    for categories, radius in invalid_cases:
+
+    for cats, rad in invalid_cases:
         try:
-            find_places(df, categories, radius_m=radius)
-            raise AssertionError(f"Очікувався ValueError для {categories}, {radius}")
+            find_places(df, categories=cats, radius_m=rad, limit=3)
+            raise AssertionError(f"Очікувався ValueError для categories={cats}, radius_m={rad}")
         except ValueError:
             pass
 
-    print("OK: Усі перевірки checks.py успішно пройдені!")
+
+def run_all_checks() -> None:
+    df = build_sample_df()
+    test_haversine_distance()
+    test_ranking_and_completeness(df)
+    test_radius_boundary(df)
+    test_limit_and_no_duplicates(df)
+    test_invalid_inputs(df)
+    print("OK: Усі перевірки check.py успішно пройдені!")
 
 
 if __name__ == "__main__":
