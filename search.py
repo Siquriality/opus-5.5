@@ -103,3 +103,88 @@ def _find_nearest(lat, lon, objects):
             nearest_distance = distance
 
     return nearest_object, nearest_distance
+
+def _found_match(category, obj, distance):
+    return {
+        "category": category,
+        "found": True,
+        "name": obj["name"],
+        "lat": obj["lat"],
+        "lon": obj["lon"],
+        "distance_m": distance,
+        "url": obj["url"],
+    }
+
+def _missing_match(category):
+    return {
+        "category": category,
+        "found": False,
+        "name": None,
+        "lat": None,
+        "lon": None,
+        "distance_m": None,
+        "url": None,
+    }
+
+
+
+def find_places(data, categories, radius_m, limit=3):
+    unique_categories = _check_input(data, categories, radius_m, limit)
+
+    if len(data) == 0:
+        return []
+
+    groups = _group_objects_by_category(data, unique_categories)
+    anchor_category = _choose_anchor_category(unique_categories, groups)
+
+    results = []
+
+    for anchor in groups[anchor_category]:
+        matches = []
+        matched_count = 0
+        total_distance_m = 0.0
+
+        for category in unique_categories:
+            if category == anchor_category:
+                matches.append(_found_match(category, anchor, 0.0))
+                matched_count += 1
+                continue
+
+            nearest, distance = _find_nearest(anchor["lat"], anchor["lon"], groups[category])
+
+            if nearest is not None and distance <= radius_m:
+                matches.append(_found_match(category, nearest, distance))
+                matched_count += 1
+                total_distance_m += distance
+            else:
+                matches.append(_missing_match(category))
+
+        if matched_count < 2:
+            continue
+
+        results.append({
+            "candidate_key": f"{anchor['osm_type']}/{anchor['osm_id']}",
+            "anchor_name": anchor["name"],
+            "lat": anchor["lat"],
+            "lon": anchor["lon"],
+            "matched_count": matched_count,
+            "requested_count": len(unique_categories),
+            "total_distance_m": total_distance_m,
+            "matches": matches,
+        })
+
+    results.sort(key=lambda r: (-r["matched_count"], r["total_distance_m"], r["candidate_key"]))
+
+    return results[:limit]
+
+
+
+if __name__ == "__main__":
+    import json
+
+    places = pd.read_csv("data/places.csv", dtype={"osm_id": str})
+
+    found = find_places(places, ["bridge", "tram_stop", "church"], radius_m=400)
+
+    print(f"Знайдено місць: {len(found)}")
+    print(json.dumps(found, ensure_ascii=False, indent=2))
