@@ -3,6 +3,8 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
+from search import find_places
+
 
 CATEGORY_LABELS = {
     "bridge": "Міст",
@@ -55,6 +57,31 @@ def load_places():
     return places
 
 
+def show_candidates(candidates):
+    st.header("Можливі місця")
+    if not candidates:
+        st.info("Можливих місць не знайдено")
+        return
+
+    for candidate in candidates:
+        st.subheader(candidate["anchor_name"])
+        matched_count = candidate["matched_count"]
+        requested_count = candidate["requested_count"]
+        st.write(f"Збіглися {matched_count} із {requested_count} орієнтирів")
+
+        for match in candidate["matches"]:
+            category_name = CATEGORY_LABELS[match["category"]]
+            if match["found"]:
+                name = match["name"]
+                distance_m = match["distance_m"]
+                st.write(f"- {category_name}: {name} — {distance_m:.0f} м")
+            else:
+                st.write(f"- {category_name}: Не знайдено в заданому радіусі")
+
+    st.caption("Точки кандидатів. Відстані виміряно від опорного орієнтира.")
+    st.map(pd.DataFrame(candidates, columns=["lat", "lon"]))
+
+
 st.title("Де зроблено це фото?")
 st.write("Пошук можливих місць за поєднанням орієнтирів")
 st.caption("Область пошуку — вибрана ділянка лівого берега Києва")
@@ -82,12 +109,12 @@ if submitted:
     if len(selected_categories) < 2:
         st.warning("Оберіть щонайменше два орієнтири")
     else:
-        selected_labels = ", ".join(
-            CATEGORY_LABELS[category] for category in selected_categories
-        )
-        st.write(f"Обрані орієнтири: {selected_labels}")
-        st.write(f"Радіус пошуку: {radius_m} м")
-        st.info("Пошук буде підключено на наступному етапі")
+        try:
+            candidates = find_places(places, selected_categories, radius_m, limit=3)
+        except ValueError as error:
+            st.error(str(error))
+        else:
+            show_candidates(candidates)
 
 st.header("Орієнтири в наборі даних")
 st.caption("Огляд набору даних. Карта показує всі наявні орієнтири незалежно від вибору у формі.")
