@@ -18,3 +18,4 @@ def haversine_m(lat1, lon1, lat2, lon2):
     central_angle = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
     return EARTH_RADIUS_M * central_angle
+
