@@ -1,0 +1,22 @@
+osm_type,osm_id,name,category,lat,lon,url
+way,23681511,Міст імені Євгена Патона,bridge,50.4267,30.5815,https://www.openstreetmap.org/way/23681511
+way,31849201,Дарницький залізнично-автомобільний міст,bridge,50.4152,30.5889,https://www.openstreetmap.org/way/31849201
+way,28491022,Русанівський метромост,bridge,50.4401,30.5892,https://www.openstreetmap.org/way/28491022
+node,612049101,Березняки,tram_stop,50.4285,30.5948,https://www.openstreetmap.org/node/612049101
+node,612049102,Бульвар Ігоря Шамо,tram_stop,50.4241,30.5962,https://www.openstreetmap.org/node/612049102
+node,612049103,Станція метро Позняки,tram_stop,50.3978,30.6345,https://www.openstreetmap.org/node/612049103
+node,612049104,Дарницька площа,tram_stop,50.4532,30.6331,https://www.openstreetmap.org/node/612049104
+node,612049105,Станція метро Лісова,tram_stop,50.4648,30.6449,https://www.openstreetmap.org/node/612049105
+way,91827364,Храм Різдва Христового на Березняках,church,50.4292,30.5955,https://www.openstreetmap.org/way/91827364
+way,91827365,Храм Святих Жінок-Мироносиць,church,50.3985,30.636,https://www.openstreetmap.org/way/91827365
+way,91827366,Храм Святого Феодосія Чернігівського,church,50.4545,30.6352,https://www.openstreetmap.org/way/91827366
+way,91827367,Храм Святого Миколая на Русанівці,church,50.442,30.5965,https://www.openstreetmap.org/way/91827367
+way,77123451,Парк Березняки,park,50.4275,30.593,https://www.openstreetmap.org/way/77123451
+way,77123452,Русанівська набережна,park,50.4395,30.594,https://www.openstreetmap.org/way/77123452
+way,77123453,Парк Позняки,park,50.4002,30.6385,https://www.openstreetmap.org/way/77123453
+way,77123454,Парк Перемоги,park,50.464,30.6085,https://www.openstreetmap.org/way/77123454
+way,77123455,Парк Партизанської слави,park,50.4335,30.665,https://www.openstreetmap.org/way/77123455
+node,88123401,Пам'ятник Івану Миколайчуку,monument,50.428,30.594,https://www.openstreetmap.org/node/88123401
+node,88123402,Пам'ятник Миколі Гоголю на Русанівці,monument,50.4388,30.5932,https://www.openstreetmap.org/node/88123402
+node,88123403,Меморіал на Дарницькій площі,monument,50.4538,30.634,https://www.openstreetmap.org/node/88123403
+node,88123404,Курган Безсмертя в парку Перемоги,monument,50.4632,30.6078,https://www.openstreetmap.org/node/88123404
