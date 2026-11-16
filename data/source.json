@@ -1,0 +1,28 @@
+{
+  "source": "OpenStreetMap (Overpass API)",
+  "attribution": "© OpenStreetMap contributors",
+  "license_url": "https://www.openstreetmap.org/copyright",
+  "date": "2026-11-16",
+  "area": "Kyiv (Left Bank)",
+  "bbox": [
+    50.36,
+    30.56,
+    50.56,
+    30.83
+  ],
+  "filters": {
+    "bridge": "way[bridge=yes]",
+    "tram_stop": "node[railway=tram_stop]",
+    "church": "nwr[amenity=place_of_worship][religion=christian]",
+    "park": "nwr[leisure=park]",
+    "monument": "nwr[historic=monument|memorial]"
+  },
+  "counts_by_category": {
+    "tram_stop": 5,
+    "park": 5,
+    "church": 4,
+    "monument": 4,
+    "bridge": 3
+  },
+  "total_records": 21
+}
