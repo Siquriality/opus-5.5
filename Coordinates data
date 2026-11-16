@@ -1,0 +1,122 @@
+import os
+import json
+import requests
+os.makedirs("data", exist_ok=True)
+COORDINATES = "50.36,30.56,50.56,30.83"
+overpass_url = "https://overpass-api.de/api/interpreter"
+query = f"""
+[out:json][timeout:60];
+(
+  way["bridge"="yes"]({BBOX});
+  node["railway"="tram_stop"]({BBOX});
+  nwr["amenity"="place_of_worship"]["religion"="christian"]({BBOX});
+  nwr["leisure"="park"]({BBOX});
+  nwr["historic"="monument"]({BBOX});
+  nwr["historic"="memorial"]({BBOX});
+);
+out center;
+"""
+print("Завантажуємо дані по Лівому берегу Києва:")
+response = requests.post(overpass_url, data={"data": query})
+raw_data = response.json()
+response = requests.post(overpass_url, data={"data": query})
+raw_data = response.json()
+with open("data/raw_osm.json", "w", encoding="utf-8") as f:
+    json.dump(raw_data, f, ensure_ascii=False, indent=2)
+print("Готово! Збережено елементів:", len(raw_data.get("elements", [])))
+
+import json
+import pandas as pd
+def get_category(tags):
+if tags.get("railway") == "tram_stop":
+        return "tram_stop"
+    if tags.get("bridge") == "yes":
+        return "bridge"
+    if tags.get("amenity") == "place_of_worship" and tags.get("religion") == "christian":
+        return "church"
+    if tags.get("leisure") == "park":
+        return "park"
+    if tags.get("historic") in ("monument", "memorial"):
+       return "monument"
+    return None
+def extract_coordinates(element):
+    if element.get("type") == "node":
+        return element.get("lat"), element.get("lon")
+    center = element.get("center")
+    if center:
+        return center.get("lat"), center.get("lon")
+    return None, None
+def main():
+    with open("data/raw_osm.json", "r", encoding="utf-8") as f:
+        raw_data = json.load(f)
+
+    elements = raw_data.get("elements", [])
+    read_count = len(elements)
+    skipped_count = 0
+    rows = []
+
+    for el in elements:
+        osm_type = el.get("type")
+        osm_id = str(el.get("id", ""))
+        tags = el.get("tags", {})
+
+        category = get_category(tags)
+        if not category or osm_type not in ("node", "way", "relation"):
+            skipped_count += 1
+            continue
+        latitude, longitude = extract_coordinates(el)
+        if latitude is None or longitude is None:
+            skipped_count += 1
+            continue
+        if not (50.36 <= latitude <= 50.56 and 30.56 <= longitude <= 30.83):
+            skipped_count += 1
+            continue
+        raw_name = tags.get("name") or tags.get("name:uk") or tags.get("name:ru")
+        name = raw_name.strip() if raw_name else f"{category}_{osm_id}"
+
+        url = f"https://www.openstreetmap.org/{osm_type}/{osm_id}"
+
+        rows.append({
+            "osm_type": osm_type,
+            "osm_id": osm_id,
+            "name": name,
+            "category": category,
+            "lat": float(latitude),
+            "lon": float(longitude),
+            "url": url,
+        })
+    df = pd.DataFrame(rows, columns=["osm_type", "osm_id", "name", "category", "lat", "lon", "url"])
+    before_dedup = len(df)
+    df = df.drop_duplicates(subset=["osm_type", "osm_id", "category"]).reset_index(drop=True)
+    duplicates_removed = before_dedup - len(df)
+    df.to_csv("data/places.csv", index=False, encoding="utf-8")
+    category_counts = df["category"].value_counts().to_dict()
+    source_meta = {
+        "source": "OpenStreetMap (Overpass API)",
+        "attribution": "© OpenStreetMap contributors",
+        "license_url": "https://www.openstreetmap.org/copyright",
+        "date": "2026-11-16",
+        "area": "Kyiv (Left Bank)",
+        "bbox": [50.36, 30.56, 50.56, 30.83],
+        "filters": {
+            "bridge": "way[bridge=yes]",
+            "tram_stop": "node[railway=tram_stop]",
+            "church": "nwr[amenity=place_of_worship][religion=christian]",
+            "park": "nwr[leisure=park]",
+            "monument": "nwr[historic=monument|memorial]"
+        },
+        "counts_by_category": category_counts,
+        "total_records": len(df)
+    }
+    with open("data/source.json", "w", encoding="utf-8") as f:
+        json.dump(source_meta, f, ensure_ascii=False, indent=2)
+
+    print(f"Прочитано елементів: {read_count}")
+    print(f"Пропущено (без координат/категорії/поза областю): {skipped_count}")
+    print(f"Видалено дублікатів: {duplicates_removed}")
+    print(f"Збережено в data/places.csv: {len(df)}")
+    print("Розподіл за категоріями:", category_counts)
+
+
+if __name__ == "__main__":
+    main()
