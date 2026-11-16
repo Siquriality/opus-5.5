@@ -1,0 +1,235 @@
+import math
+from pathlib import Path
+import pandas as pd
+
+EARTH_RADIUS_M = 6_371_000  # радіус Землі
+
+# Межі радіуса пошуку
+MIN_RADIUS_M = 100
+MAX_RADIUS_M = 1500
+DEFAULT_RADIUS_M = 400
+
+ALLOWED_CATEGORIES = ["bridge", "tram_stop", "church", "park", "monument"]
+
+
+def haversine_m(lat1, lon1, lat2, lon2):
+    """Відстань у метрах між двома точками на Землі (формула haversine)."""
+    lat1_rad = math.radians(lat1)
+    lat2_rad = math.radians(lat2)
+    delta_lat = math.radians(lat2 - lat1)
+    delta_lon = math.radians(lon2 - lon1)
+
+    a = (math.sin(delta_lat / 2) ** 2
+         + math.cos(lat1_rad) * math.cos(lat2_rad) * math.sin(delta_lon / 2) ** 2)
+    central_angle = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+    return EARTH_RADIUS_M * central_angle
+
+
+def _remove_duplicates(categories):
+    """Прибирає повтори зі списку, зберігаючи порядок."""
+    unique = []
+    for category in categories:
+        if category not in unique:
+            unique.append(category)
+    return unique
+
+
+def _check_input(data, categories, radius_m, limit):
+    """Перевіряє вхідні дані, при помилці кидає ValueError.
+    Повертає категорії без повторів."""
+    if isinstance(categories, str):
+        raise ValueError("Категорії треба передати списком, наприклад ['bridge', 'church'].")
+
+    unique_categories = _remove_duplicates(categories)
+
+    if len(unique_categories) < 2:
+        raise ValueError("Оберіть щонайменше дві різні категорії орієнтирів.")
+
+    for category in unique_categories:
+        if category not in ALLOWED_CATEGORIES:
+            raise ValueError(
+                f"Невідома категорія '{category}'. "
+                f"Дозволені: {', '.join(ALLOWED_CATEGORIES)}."
+            )
+
+    # bool — теж int у Python, тому відсікаємо окремо
+    if isinstance(radius_m, bool) or not isinstance(radius_m, (int, float)):
+        raise ValueError("Радіус має бути числом (у метрах).")
+    if not math.isfinite(radius_m):  # NaN або нескінченність
+        raise ValueError("Радіус має бути звичайним скінченним числом, а не NaN чи нескінченністю.")
+    if radius_m < MIN_RADIUS_M or radius_m > MAX_RADIUS_M:
+        raise ValueError(
+            f"Радіус має бути від {MIN_RADIUS_M} до {MAX_RADIUS_M} метрів, "
+            f"а отримано {radius_m}."
+        )
+
+    if isinstance(limit, bool) or not isinstance(limit, int) or limit < 1:
+        raise ValueError("limit має бути цілим числом не менше 1.")
+
+    # Порожні дані — не помилка, а просто порожній результат
+    if len(data) > 0:
+        categories_in_data = set(data["category"])
+        for category in unique_categories:
+            if category not in categories_in_data:
+                raise ValueError(
+                    f"Категорії '{category}' немає в даних. "
+                    "Оберіть іншу або оновіть файл places.csv."
+                )
+
+    return unique_categories
+
+
+def _group_objects_by_category(data, categories):
+    """Розкладає об'єкти за категоріями: {"bridge": [...], "church": [...]}.
+    Робиться один раз перед пошуком, DataFrame не змінюється."""
+    groups = {}
+    for category in categories:
+        rows = data[data["category"] == category]
+        objects = []
+        for row in rows.itertuples(index=False):
+            objects.append({
+                "osm_type": str(row.osm_type),
+                "osm_id": str(row.osm_id),
+                "name": str(row.name),
+                "lat": float(row.lat),
+                "lon": float(row.lon),
+                "url": str(row.url),
+            })
+        groups[category] = objects
+    return groups
+
+
+def _choose_anchor_category(categories, groups):
+    """Опорна категорія — та, де найменше об'єктів (менше кандидатів = швидше).
+    При рівності береться перша з обраних."""
+    return min(categories, key=lambda category: len(groups[category]))
+
+
+def _find_nearest(lat, lon, objects):
+    """Найближчий до точки об'єкт і відстань до нього, або (None, None)."""
+    nearest_object = None
+    nearest_distance = None
+
+    for obj in objects:
+        distance = haversine_m(lat, lon, obj["lat"], obj["lon"])
+
+        # При однаковій відстані обираємо за osm_type/osm_id,
+        # щоб порядок рядків у CSV не впливав на результат
+        is_closer = nearest_distance is None or distance < nearest_distance
+        is_same_but_smaller_key = (
+            nearest_distance is not None
+            and distance == nearest_distance
+            and (obj["osm_type"], obj["osm_id"])
+            < (nearest_object["osm_type"], nearest_object["osm_id"])
+        )
+        if is_closer or is_same_but_smaller_key:
+            nearest_object = obj
+            nearest_distance = distance
+
+    return nearest_object, nearest_distance
+
+
+def _found_match(category, obj, distance):
+    """Запис про знайдений орієнтир."""
+    return {
+        "category": category,
+        "found": True,
+        "name": obj["name"],
+        "lat": obj["lat"],
+        "lon": obj["lon"],
+        "distance_m": distance,
+        "url": obj["url"],
+    }
+
+
+def _missing_match(category):
+    """Запис про орієнтир, якого немає в радіусі."""
+    return {
+        "category": category,
+        "found": False,
+        "name": None,
+        "lat": None,
+        "lon": None,
+        "distance_m": None,
+        "url": None,
+    }
+
+
+def find_places(data, categories, radius_m, limit=3):
+    """Шукає місця, де поруч є обрані орієнтири.
+
+    Вхід: DataFrame з places.csv, список категорій (мінімум 2 різні),
+    радіус 100–1500 м, limit — максимум результатів.
+
+    Повертає список словників з полями candidate_key, anchor_name, lat, lon,
+    matched_count, requested_count, total_distance_m, matches.
+    Показуються тільки кандидати з мінімум 2 збігами.
+
+    Неправильний ввід — ValueError.
+    """
+    unique_categories = _check_input(data, categories, radius_m, limit)
+
+    if len(data) == 0:
+        return []
+
+    groups = _group_objects_by_category(data, unique_categories)
+    anchor_category = _choose_anchor_category(unique_categories, groups)
+
+    results = []
+
+    # Кожен об'єкт опорної категорії — кандидат
+    for anchor in groups[anchor_category]:
+        matches = []
+        matched_count = 0
+        total_distance_m = 0.0
+
+        for category in unique_categories:
+            # Опорний об'єкт завжди знайдений, відстань 0
+            if category == anchor_category:
+                matches.append(_found_match(category, anchor, 0.0))
+                matched_count += 1
+                continue
+
+            nearest, distance = _find_nearest(anchor["lat"], anchor["lon"], groups[category])
+
+            # Рівно на межі радіуса — теж підходить
+            if nearest is not None and distance <= radius_m:
+                matches.append(_found_match(category, nearest, distance))
+                matched_count += 1
+                total_distance_m += distance
+            else:
+                matches.append(_missing_match(category))
+
+        # Тільки опорний об'єкт — пропускаємо
+        if matched_count < 2:
+            continue
+
+        results.append({
+            "candidate_key": f"{anchor['osm_type']}/{anchor['osm_id']}",
+            "anchor_name": anchor["name"],
+            "lat": anchor["lat"],
+            "lon": anchor["lon"],
+            "matched_count": matched_count,
+            "requested_count": len(unique_categories),
+            "total_distance_m": total_distance_m,
+            "matches": matches,
+        })
+
+    # Сортування: більше збігів, потім менша сума відстаней, потім за ключем
+    results.sort(key=lambda r: (-r["matched_count"], r["total_distance_m"], r["candidate_key"]))
+
+    return results[:limit]
+
+
+# Приклад запуску: python search.py
+if __name__ == "__main__":
+    import json
+
+    csv_path = Path(__file__).resolve().parent / "data" / "places.csv"
+    places = pd.read_csv(csv_path, dtype={"osm_id": str})
+
+    found = find_places(places, ["tram_stop", "church", "monument"], radius_m=400)
+
+    print(f"Знайдено місць: {len(found)}")
+    print(json.dumps(found, ensure_ascii=False, indent=2))
