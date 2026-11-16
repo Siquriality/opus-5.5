@@ -1,8 +1,58 @@
 import json
+import urllib.parse
+import urllib.request
 import pandas as pd
 
-with open("data/raw_osm.json", "r", encoding="utf-8") as f:
-    raw_data = json.load(f)
+BBOX = (50.38, 30.58, 50.48, 30.68)
+
+OVERPASS_QUERY = f"""[out:json][timeout:60];
+(
+  way["bridge"="yes"]{BBOX};
+  node["railway"="tram_stop"]{BBOX};
+  nwr["amenity"="place_of_worship"]["religion"="christian"]{BBOX};
+  nwr["leisure"="park"]{BBOX};
+  nwr["historic"="monument"]{BBOX};
+  nwr["historic"="memorial"]{BBOX};
+  way(23705293);
+  way(149714824);
+  way(1282234657);
+);
+out center;"""
+
+MIRRORS = [
+    "https://overpass-api.de/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter",
+    "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+]
+
+raw_data = None
+used_mirror = None
+
+for url in MIRRORS:
+    try:
+        print(f"Пробую завантажити з {url} ...")
+        data = urllib.parse.urlencode({"data": OVERPASS_QUERY}).encode("utf-8")
+        req = urllib.request.Request(
+            url,
+            data=data,
+            headers={"User-Agent": "KyivLeftBankHackathon/1.0"},
+        )
+        with urllib.request.urlopen(req, timeout=70) as resp:
+            text = resp.read().decode("utf-8")
+            parsed = json.loads(text)
+            if parsed.get("elements"):
+                raw_data = parsed
+                used_mirror = url
+                print(f"Успішно! Отримано елементів: {len(parsed['elements'])}")
+                break
+    except Exception as e:
+        print(f"Не вдалося з {url}: {e}")
+
+if raw_data is None:
+    raise RuntimeError("Не вдалося завантажити дані з жодного дзеркала Overpass API.")
+
+with open("data/raw_osm.json", "w", encoding="utf-8") as f:
+    json.dump(raw_data, f, ensure_ascii=False, indent=2)
 
 elements = raw_data.get("elements", [])
 read_count = len(elements)
@@ -45,7 +95,7 @@ for el in elements:
         skipped_count += 1
         continue
 
-    raw_name = tags.get("name") or tags.get("name:uk") or tags.get("name:ru")
+    raw_name = tags.get("name:uk") or tags.get("name") or tags.get("name:ru")
     name = raw_name.strip() if raw_name else f"{category}_{osm_id}"
     url = f"https://www.openstreetmap.org/{osm_type}/{osm_id}"
 
@@ -70,11 +120,13 @@ df.to_csv("data/places.csv", index=False, encoding="utf-8")
 category_counts = df["category"].value_counts().to_dict()
 source_meta = {
     "source": "OpenStreetMap (Overpass API)",
+    "endpoint": used_mirror,
     "attribution": "© OpenStreetMap contributors",
     "license_url": "https://www.openstreetmap.org/copyright",
     "date": "2026-11-16",
     "area": "Kyiv (Left Bank)",
-    "bbox": [50.36, 30.56, 50.56, 30.83],
+    "bbox": list(BBOX),
+    "overpass_query": OVERPASS_QUERY,
     "filters": {
         "bridge": "way[bridge=yes]",
         "tram_stop": "node[railway=tram_stop]",
