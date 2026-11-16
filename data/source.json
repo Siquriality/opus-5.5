@@ -1,15 +1,17 @@
 {
   "source": "OpenStreetMap (Overpass API)",
+  "endpoint": "https://overpass-api.de/api/interpreter",
   "attribution": "© OpenStreetMap contributors",
   "license_url": "https://www.openstreetmap.org/copyright",
   "date": "2026-11-16",
   "area": "Kyiv (Left Bank)",
   "bbox": [
-    50.36,
-    30.56,
-    50.56,
-    30.83
+    50.38,
+    30.58,
+    50.48,
+    30.68
   ],
+  "overpass_query": "[out:json][timeout:60];\n(\n  way[\"bridge\"=\"yes\"](50.38, 30.58, 50.48, 30.68);\n  node[\"railway\"=\"tram_stop\"](50.38, 30.58, 50.48, 30.68);\n  nwr[\"amenity\"=\"place_of_worship\"][\"religion\"=\"christian\"](50.38, 30.58, 50.48, 30.68);\n  nwr[\"leisure\"=\"park\"](50.38, 30.58, 50.48, 30.68);\n  nwr[\"historic\"=\"monument\"](50.38, 30.58, 50.48, 30.68);\n  nwr[\"historic\"=\"memorial\"](50.38, 30.58, 50.48, 30.68);\n  way(23705293);\n  way(149714824);\n  way(1282234657);\n);\nout center;",
   "filters": {
     "bridge": "way[bridge=yes]",
     "tram_stop": "node[railway=tram_stop]",
@@ -18,11 +20,11 @@
     "monument": "nwr[historic=monument|memorial]"
   },
   "counts_by_category": {
-    "tram_stop": 5,
-    "park": 5,
-    "church": 4,
-    "monument": 4,
-    "bridge": 3
+    "bridge": 173,
+    "park": 128,
+    "tram_stop": 109,
+    "church": 67,
+    "monument": 62
   },
-  "total_records": 21
+  "total_records": 539
 }
